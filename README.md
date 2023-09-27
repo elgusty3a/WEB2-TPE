@@ -5,7 +5,7 @@
 | NOMBRE  | e-mail  | Github |
 | :------------: |:---------------:| :-------------------: |
 | Arias Gustavo      | ariasgustavo3a@gmail.com | https://github.com/elgusty3a |
-| Gonzalez Tomás     | tomasgonzalez429030@gmail.com | https://github.com/ |
+| Gonzalez Tomás     | tomasgonzalez429030@gmail.com | https://github.com/tomasgonzalez24 |
 
 #
 # <p align=center> TRES-A Neumaticos
