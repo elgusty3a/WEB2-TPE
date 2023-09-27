@@ -18,7 +18,7 @@
 ##
 ## <p align=center> GRÁFICO DE ENTIDAD-RELACIÓN
 <p align=center>
-<img src="WEB2-TPE-1raP/BDs/estructura BD.png" alt="logo-exactas">
+<img src="WEB2-TPE-1raP/BDs/estructura BD.jpg" alt="logo-exactas">
 
 - La tabla "usuarios" se utilizará a modo de LOGIN del administrador del sitio.
 - En la tabla "clientes" se guardarán los datos de los mismos y se detallará el producto que deseé adquirir.
@@ -32,7 +32,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-09-2023 a las 00:14:29
+-- Tiempo de generación: 27-09-2023 a las 06:21:01
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -53,10 +53,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `clientes`
+-- Estructura de tabla para la tabla `productos`
 --
 
-CREATE TABLE `clientes` (
+CREATE TABLE `productos` (
+  `id_producto` int(11) NOT NULL,
+  `tipo` int(11) NOT NULL,
+  `marca` varchar(50) NOT NULL,
+  `medidas` varchar(50) NOT NULL,
+  `precio` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reg_ventas`
+--
+
+CREATE TABLE `reg_ventas` (
   `id_venta` int(11) NOT NULL,
   `apellido` varchar(50) NOT NULL,
   `nombre` varchar(50) NOT NULL,
@@ -65,19 +79,8 @@ CREATE TABLE `clientes` (
   `telefono` int(11) NOT NULL,
   `CUIT` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `productos`
---
-
-CREATE TABLE `productos` (
-  `id_producto` int(11) NOT NULL,
-  `tipo` int(11) NOT NULL,
-  `precio` int(11) NOT NULL
+  `cantidad` int(11) NOT NULL,
+  `total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -96,17 +99,17 @@ CREATE TABLE `usuarios` (
 --
 
 --
--- Indices de la tabla `clientes`
---
-ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`id_venta`),
-  ADD KEY `id_producto` (`id_producto`);
-
---
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`id_producto`);
+
+--
+-- Indices de la tabla `reg_ventas`
+--
+ALTER TABLE `reg_ventas`
+  ADD PRIMARY KEY (`id_venta`),
+  ADD KEY `id_producto` (`id_producto`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -119,26 +122,26 @@ ALTER TABLE `usuarios`
 --
 
 --
--- AUTO_INCREMENT de la tabla `clientes`
---
-ALTER TABLE `clientes`
-  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
   MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `reg_ventas`
+--
+ALTER TABLE `reg_ventas`
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `clientes`
+-- Filtros para la tabla `reg_ventas`
 --
-ALTER TABLE `clientes`
-  ADD CONSTRAINT `clientes_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`) ON UPDATE CASCADE;
+ALTER TABLE `reg_ventas`
+  ADD CONSTRAINT `reg_ventas_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
