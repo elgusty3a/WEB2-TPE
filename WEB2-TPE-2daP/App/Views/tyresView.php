@@ -1,4 +1,5 @@
 <?php
+require_once './router.php';
 
 
 class tyresView {
@@ -20,14 +21,51 @@ class tyresView {
   <title>Tresa Neumaticos</title>
 </head>
 <body>
-<h1>HOLA HEADER!!!</h1>
 ';
+echo'
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<div class="container-fluid">
+<a class="navbar-brand" href="#">Navbar</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNavDropdown">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Features</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Pricing</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Productos por categoria
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="filter/cubierta">Cubiertas</a></li>
+        <li><a class="dropdown-item" href="filter/camara">Camaras</a></li>
+        <li><a class="dropdown-item" href="filter/llanta">Llantas</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+</nav>
+';
+echo '<h1>HOLA HEADER!!!</h1>';
+
   }
+
   function filterForm(){
     echo '
     
     ';
   }
+
+
 
   function renderListProduct($products){
     echo "<h1>Lista de productos</h 1>";
@@ -36,7 +74,6 @@ class tyresView {
     echo '<table class="table">
             <thead>
               <tr class="table-primary">
-                <th scope="col">Tipo</th>
                 <th scope="col">Marca</th>
                 <th scope="col">Medida</th>
               </tr>
@@ -46,7 +83,31 @@ class tyresView {
     foreach($products as $product) {
       echo '
         <tr>
-          <td>'.$product->tipo.'</td>
+          <td>'.$product->marca.'</td>
+          <td>'.$product->medidas.'</td>
+        </tr>
+      ' ;
+    }
+    echo " </tbody>
+        </table>" ;
+  }
+
+  function renderListProductBy($products){
+    echo "<h1>Lista de productos</h 1>";
+    // echo "<a href='index.html'> Volver </a>" ;
+    // imprime la tabla de productos
+    echo '<table class="table">
+            <thead>
+              <tr class="table-primary">
+                <th scope="col">Marca</th>
+                <th scope="col">Medida</th>
+              </tr>
+            <thead>
+            <tbody>
+    ' ;
+    foreach($products as $product) {
+      echo '
+        <tr>
           <td>'.$product->marca.'</td>
           <td>'.$product->medidas.'</td>
         </tr>

@@ -8,12 +8,13 @@ define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] 
 require_once './App/Controllers/tyresController.php';
 
 
-$action = 'list'; // acción por defecto
+$action = 'home'; // acción por defecto
 if (!empty($_GET['action'])) { /* si viene definida la reemplazamos*/
   $action = $_GET['action'];
 }
 
 $params = explode('/', $action);
+
 // list    ->         tyresController->showList();
 //filter    ->        tyresController->filterBy();
 // add   ->         tyresController->addItem();
@@ -24,26 +25,27 @@ $params = explode('/', $action);
 // logout ->            tyresController->logout();
 // auth                 tyresController->auth(); // toma los datos del post y autentica al usuario
 
+$control= new tyresController();
 
 switch ($params[0]) {
+  case 'home':
+    $control->showHome();
+    break;
   case 'list':
-      $control= new tyresController();
       $control->showListProducts();
     break;
   case 'filter':
-      $control= new tyresController();
-      $control->filterBy($params[1],$params[2]);  /*TODO hacer filtro */
+//     var_dump($params);
+// die;
+    $control->filterBy($params[1]);  /*TODO hacer filtro */
     break;
   case 'add':
-      $control= new tyresController();
       $control->addItem();
     break;
   case 'edit':
-      $control= new tyresController();
       $control->editItem($id);
     break;
   case 'delete':
-      $control= new tyresController();
       $control->deleteItem($id);
     break;
 

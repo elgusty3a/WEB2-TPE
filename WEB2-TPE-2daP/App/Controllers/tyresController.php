@@ -13,6 +13,12 @@ class tyresController{
     $this->view = new tyresView();
   }
 
+  public function showHome(){
+    // $products = $this->model->getListProducts();
+    $this->view->showHeader();
+    $this->view->showFooter();
+
+  }
   public function showListProducts(){
     $products = $this->model->getListProducts();
     $this->view->showHeader();
@@ -21,10 +27,10 @@ class tyresController{
 
   }
 
-  public function filterBy($filter,$value){
-    $products = $this->model->filterBy($filter,$value);
+  public function filterBy($filter){
+    $products = $this->model->filterBy($filter);
     $this->view->showHeader();
-    $this->view->renderListProduct($products);
+    $this->view->renderListProductBy($products);
     $this->view->showFooter();
   }
   public function addItem(){ /*TODO hacer */
