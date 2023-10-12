@@ -21,8 +21,9 @@
 <img src="WEB2-TPE-1raP/BDs/estructura BD.jpg" alt="logo-exactas">
 
 - La tabla "usuarios" se utilizará a modo de LOGIN del administrador del sitio.
-- En la tabla "clientes" se guardarán los datos de los mismos y se detallará el producto que deseé adquirir.
-- El producto indicado en la tabla "clientes" se relacionará con la tabla "productos" mediante una clave foranea, de no tener existencia el producto en la tabla del mismo, el cliente no podrá efectuar el pedido.
+- En la tabla "productos" se guardarán los datos de los mismos y se detallará el producto que deseé adquirir.
+- En la tabla "categorias" se encuentras las 3 categorias de productos ofrecidos en la tienda.
+- Cada producto se relaciona por medio de una clave foranea con su respectiva categoria.
 
 #
 # <p align=center>Código SQL que genera la base de datos (exportado desde phpMyAdmin)
