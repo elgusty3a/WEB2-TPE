@@ -15,7 +15,8 @@ if (!empty($_GET['action'])) { /* si viene definida la reemplazamos*/
 
 $params = explode('/', $action);
 // list    ->         tyresController->showList();
-// add   ->         tyresController->addTask();
+//filter    ->        tyresController->filterBy();
+// add   ->         tyresController->addItem();
 // erase/:ID  ->     tyresController->removeTask($id);
 // edit/:ID  ->    tyresController->edit($id);
 // about ->             tyresController->showAbout();
@@ -29,27 +30,23 @@ switch ($params[0]) {
       $control= new tyresController();
       $control->showListProducts();
     break;
-  case '':
-      
+  case 'filter':
+      $control= new tyresController();
+      $control->filterBy($params[1],$params[2]);  /*TODO hacer filtro */
     break;
-  case '':
-      
+  case 'add':
+      $control= new tyresController();
+      $control->addItem();
     break;
-  case '':
-      
+  case 'edit':
+      $control= new tyresController();
+      $control->editItem($id);
     break;
-  case '':
-      
+  case 'delete':
+      $control= new tyresController();
+      $control->deleteItem($id);
     break;
-  case '':
-      
-    break;
-  case '':
-      
-    break;
-  case 'naa':
-      
-    break;
+
   default:
   echo ('404 Page not found');
   break;

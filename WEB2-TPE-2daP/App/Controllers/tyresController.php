@@ -15,8 +15,23 @@ class tyresController{
 
   public function showListProducts(){
     $products = $this->model->getListProducts();
+    $this->view->showHeader();
     $this->view->renderListProduct($products);
+    $this->view->showFooter();
 
+  }
+
+  public function filterBy($filter,$value){
+    $products = $this->model->filterBy($filter,$value);
+    $this->view->showHeader();
+    $this->view->renderListProduct($products);
+    $this->view->showFooter();
+  }
+  public function addItem(){ /*TODO hacer */
+    $products = $this->model->addItem();
+    $this->view->showHeader();
+    $this->view->renderListProduct($products);
+    $this->view->showFooter();
   }
 
 
