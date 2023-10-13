@@ -30,6 +30,19 @@ class tyresController{
     $this->view->showRegister();
     $this->view->showFooter();
   }
+  public function newUser(){ //*TODO */
+    // $products = $this->model->getListProducts();
+    $this->view->showHeader();
+    if (!empty($_POST) && isset($_POST['userName']) && isset($_POST['email']) && isset($_POST['pass'])) {
+      $nombreUsuario = $_POST['userName'];
+      $email = $_POST['email'];
+      $pass = $_POST['pass'];
+      $this->model->addUser($nombreUsuario,$email,$pass);
+    }
+    $this->view->showLogin();
+    // $this->view->showRegister();
+    $this->view->showFooter();
+  }
 
   public function showListProducts(){
     $products = $this->model->getListProducts();
@@ -48,7 +61,6 @@ class tyresController{
   public function addItem(){ /*TODO hacer */
     $this->view->showHeader();
     $this->view->addItem();
-    
     $products = $this->model->addItem();
     $this->view->renderListProduct($products);
     $this->view->showFooter();

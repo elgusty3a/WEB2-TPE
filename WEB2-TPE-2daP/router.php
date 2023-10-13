@@ -13,17 +13,25 @@ if (!empty($_GET) && isset($_GET['action']) && !empty($_GET['action'])) { /* si 
 }else{
   $action = 'home'; // acción por defecto
 }
+if (!empty($_POST) && isset($_POST['action']) && !empty($_POST['action'])) { /* si viene definida la reemplazamos*/
+  $action = $_POST['action'];
+}
 
 $params = explode('/', $action);
 
 // list    ->         tyresController->showList();
 // filter    ->       tyresController->filterBy();
-// add   ->           tyresController->addItem();
-// erase/:ID  ->      tyresController->removeTask($id);
-// edit/:ID  ->       tyresController->edit($id);
+
 // login ->           tyresController->showLogin();
 // register ->        tyresController->register(); // toma los datos del post y autentica al usuario
 // logout ->          tyresController->logout();
+
+// add   ->           tyresController->addItem();
+// edit/:ID  ->       tyresController->edit($id);
+// erase/:ID  ->      tyresController->eraseItem($id);
+// search/:ID  ->     tyresController->searchItem($id);
+
+
 // about ->           tyresController->showAbout();
 
 $control= new tyresController();
@@ -43,16 +51,18 @@ switch ($params[0]) {
     
     //*-------------- login y register--------------------
     case 'login':
-      // echo ' hola login';
+      // echo ' hola register';
       $control->login();
       break;
     case 'register':
-      // echo ' hola register';
       $control->register();
+    break;
+    case 'btnagregar':
+      $control->newUser();
     break;
     case 'logout':  /*TODO hacer */
       // echo ' hola register';
-      $control->logout(); 
+      $control->logout();
     break;
 
 

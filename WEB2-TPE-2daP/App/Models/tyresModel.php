@@ -38,4 +38,11 @@ class tyresModel{
     $products = $query->fetchAll(PDO::FETCH_OBJ);
     return $products;
   }
+  
+  function addUser($nombreUsuario,$email,$pass){
+    $pass = password_hash($pass, PASSWORD_BCRYPT);
+    $db = new PDO('mysql:host=localhost;' . 'dbname=tresa_neumaticos;charset=utf8', 'root', '');
+    $query = $db->prepare("INSERT INTO usuarios (nombreUsuario,email,pass) VALUES (?,?,?)");
+    $query->execute([$nombreUsuario, $email, $pass]);
+  }
 }
