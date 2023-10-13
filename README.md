@@ -33,7 +33,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-10-2023 a las 05:23:35
+-- Tiempo de generación: 13-10-2023 a las 16:20:51
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -50,6 +50,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `tresa_neumaticos`
 --
+CREATE DATABASE IF NOT EXISTS `tresa_neumaticos` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `tresa_neumaticos`;
 
 -- --------------------------------------------------------
 
@@ -81,8 +83,8 @@ CREATE TABLE `productos` (
   `id_producto` int(11) NOT NULL,
   `marca` varchar(50) NOT NULL,
   `medidas` varchar(50) NOT NULL,
-  `indice_carga` int(11) NOT NULL,
-  `indice_velocidad` char(10) NOT NULL,
+  `indice_carga` int(11) DEFAULT NULL,
+  `indice_velocidad` char(10) DEFAULT NULL,
   `precio` int(11) NOT NULL,
   `id_categoria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -128,6 +130,8 @@ INSERT INTO `productos` (`id_producto`, `marca`, `medidas`, `indice_carga`, `ind
 --
 
 CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `nombreUsuario` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `pass` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -153,7 +157,9 @@ ALTER TABLE `productos`
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`email`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `nombreUsuario` (`nombreUsuario`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -170,10 +176,17 @@ ALTER TABLE `categorias`
 --
 ALTER TABLE `productos`
   MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
 ```
 
