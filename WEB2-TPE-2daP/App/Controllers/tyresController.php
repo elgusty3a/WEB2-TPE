@@ -34,8 +34,10 @@ class tyresController{
     $this->view->showFooter();
   }
   public function addItem(){ /*TODO hacer */
-    $products = $this->model->addItem();
     $this->view->showHeader();
+    $this->view->addItem();
+    
+    $products = $this->model->addItem();
     $this->view->renderListProduct($products);
     $this->view->showFooter();
   }
