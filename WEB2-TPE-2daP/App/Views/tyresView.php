@@ -163,59 +163,87 @@ echo'
 
 
   function renderListProduct($products){
-    echo "<h1>Lista de productos</h 1>";
+    echo "<h1>Lista de productos</h1><br>";
     // echo "<a href='index.html'> Volver </a>" ;
     // imprime la tabla de productos
-    echo '<table class="table">
-            <thead>
-              <tr class="table-primary">
+    echo '
+        <section class="conteiner">
+        <div class="row">
+    <div class="col">
+    
+    </div>
+        <div class="col-10">
+        <table class="table table-dark table-striped table-sm">
+        <thead>
+              <tr class="text-center table-primary fs-1">
                 <th scope="col">Marca</th>
                 <th scope="col">Medida</th>
                 <th scope="col">Precio</th>
                 <th scope="col">Categoria</th>
                 </tr>
                 <thead>
-            <tbody>
+                <tbody>
     ' ;
     foreach($products as $product) {
       echo '
-        <tr>
-          <td>'.$product->marca.'</td>
-          <td>'.$product->medidas.'</td>
-          <td>'.$product->precio.'</td>
-          <td>'.$product->categoria.'</td>
+        <tr class="text-center fs-3">
+          <td >'.$product->marca.'</td>
+          <td >'.$product->medidas.'</td>
+          <td >'.$product->precio.'</td>
+          <td >'.$product->categoria.'</td>
           </tr>
           ' ;
         }
-        echo " </tbody>
-        </table>" ;
+        echo ' </tbody>
+        </table>
+        </div>
+        <div class="col">
+    
+    </div>
+    </div>
+      </section>' ;
   }
 
-  function renderListProductBy($products){
-    echo "<h1>Lista de productos</h 1>";
+  function renderListProductBy($products,$filter){
+    echo "<h1>Lista de ${filter}s</h1><br>";
     // echo "<a href='index.html'> Volver </a>" ;
     // imprime la tabla de productos
-    echo '<table class="table">
-            <thead>
-              <tr class="table-primary">
+    echo '
+        <section class="conteiner">
+        <div class="row">
+    <div class="col">
+    
+    </div>
+        <div class="col-10">
+        <table class="table table-dark table-striped table-sm">
+        <thead>
+              <tr class="text-center table-primary fs-1">
                 <th scope="col">Marca</th>
                 <th scope="col">Medida</th>
                 <th scope="col">Precio</th>
-              </tr>
-            <thead>
-            <tbody>
+                
+                </tr>
+                <thead>
+                <tbody>
     ' ;
     foreach($products as $product) {
       echo '
-      <tr>
-      <td>'.$product->marca.'</td>
-      <td>'.$product->medidas.'</td>
-      <td>'.$product->precio.'</td>
-        </tr>
-      ' ;
-    }
-    echo " </tbody>
-        </table>" ;
+        <tr class="text-center fs-3">
+          <td >'.$product->marca.'</td>
+          <td >'.$product->medidas.'</td>
+          <td >'.$product->precio.'</td>
+          
+          </tr>
+          ' ;
+        }
+        echo ' </tbody>
+        </table>
+        </div>
+        <div class="col">
+    
+    </div>
+    </div>
+      </section>' ;
   }
   function renderError() {
     echo "<h2>Error! Género no especificado.</h2>" ;

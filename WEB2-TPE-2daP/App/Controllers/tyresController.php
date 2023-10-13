@@ -42,7 +42,7 @@ class tyresController{
   public function filterBy($filter){
     $products = $this->model->filterBy($filter);
     $this->view->showHeader();
-    $this->view->renderListProductBy($products);
+    $this->view->renderListProductBy($products,$filter);
     $this->view->showFooter();
   }
   public function addItem(){ /*TODO hacer */
