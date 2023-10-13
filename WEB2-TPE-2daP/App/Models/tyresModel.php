@@ -10,7 +10,7 @@ class tyresModel{
    */
   function getListProducts(){
     $db = new PDO('mysql:host=localhost;' . 'dbname=tresa_neumaticos;charset=utf8', 'root', '');
-    $query = $db->prepare('SELECT * FROM productos');
+    $query = $db->prepare('SELECT * FROM productos p INNER JOIN categorias c ON p.id_categoria = c.id');
     $query->execute();
     $products = $query->fetchAll(PDO::FETCH_OBJ);
     return $products;

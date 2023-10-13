@@ -39,7 +39,7 @@ echo'
       <a class="nav-link" href="add">Add</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Pricing</a>
+      <a class="nav-link" href="list">Nuestros Productos</a>
     </li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -53,8 +53,8 @@ echo'
     </li>
   </ul>
   <div class="col-md-3 col-md-auto text-end">
-    <button type="button" class="btn btn-outline-primary me-2">Login</button>
-    <button type="button" class="btn btn-primary">Sign-up</button>
+    <a href="login"><button type="button" class="btn btn-outline-primary me-2">Login</button></a>
+    <a href="register"><button type="button" class="btn btn-primary">Sign-up</button></a>
   </div>
 </div>
 </div>
@@ -64,9 +64,99 @@ echo'
 
   }
 
-  function filterForm(){
+  function showLogin(){
     echo '
-    
+    <section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card bg-dark text-white" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+  
+              <div class="mb-md-5 mt-md-4 pb-5">
+  
+                <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                <p class="text-white-50 mb-5">Please enter your login and password!</p>
+  
+                <div class="form-outline form-white mb-4">
+                  <input type="email" id="typeEmailX" class="form-control form-control-lg" />
+                  <label class="form-label" for="typeEmailX">Email</label>
+                </div>
+  
+                <div class="form-outline form-white mb-4">
+                  <input type="password" id="typePasswordX" class="form-control form-control-lg" />
+                  <label class="form-label" for="typePasswordX">Password</label>
+                </div>
+  
+                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
+  
+                <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+  
+                <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                  <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                  <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+                  <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+                </div>
+  
+              </div>
+  
+              <div>
+                <p class="mb-0">Dont have an account? <a href="register" class="text-white-50 fw-bold">Sign Up</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+    ';
+  }
+  function showRegister(){
+    echo '
+    <section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card bg-dark text-white" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+  
+              <div class="mb-md-5 mt-md-4 pb-5">
+  
+                <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                <p class="text-white-50 mb-5">Please enter your login and password!</p>
+  
+                <div class="form-outline form-white mb-4">
+                  <input type="text" id="nameUser" class="form-control form-control-lg" />
+                  <label class="form-label" for="nameUser">Name User</label>
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                  <input type="email" id="typeEmailX" class="form-control form-control-lg" />
+                  <label class="form-label" for="typeEmailX">Email</label>
+                </div>
+  
+                <div class="form-outline form-white mb-4">
+                  <input type="password" id="typePasswordX" class="form-control form-control-lg" />
+                  <label class="form-label" for="typePasswordX">Password</label>
+                </div>
+  
+                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
+  
+                <button class="btn btn-outline-light btn-lg px-5" type="submit">Register</button>
+  
+                <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                  <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                  <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+                  <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
     ';
   }
 
@@ -81,8 +171,10 @@ echo'
               <tr class="table-primary">
                 <th scope="col">Marca</th>
                 <th scope="col">Medida</th>
-              </tr>
-            <thead>
+                <th scope="col">Precio</th>
+                <th scope="col">Categoria</th>
+                </tr>
+                <thead>
             <tbody>
     ' ;
     foreach($products as $product) {
@@ -90,10 +182,12 @@ echo'
         <tr>
           <td>'.$product->marca.'</td>
           <td>'.$product->medidas.'</td>
-        </tr>
-      ' ;
-    }
-    echo " </tbody>
+          <td>'.$product->precio.'</td>
+          <td>'.$product->categoria.'</td>
+          </tr>
+          ' ;
+        }
+        echo " </tbody>
         </table>" ;
   }
 
@@ -106,15 +200,17 @@ echo'
               <tr class="table-primary">
                 <th scope="col">Marca</th>
                 <th scope="col">Medida</th>
+                <th scope="col">Precio</th>
               </tr>
             <thead>
             <tbody>
     ' ;
     foreach($products as $product) {
       echo '
-        <tr>
-          <td>'.$product->marca.'</td>
-          <td>'.$product->medidas.'</td>
+      <tr>
+      <td>'.$product->marca.'</td>
+      <td>'.$product->medidas.'</td>
+      <td>'.$product->precio.'</td>
         </tr>
       ' ;
     }

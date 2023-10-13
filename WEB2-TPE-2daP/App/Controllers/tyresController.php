@@ -17,8 +17,20 @@ class tyresController{
     // $products = $this->model->getListProducts();
     $this->view->showHeader();
     $this->view->showFooter();
-
   }
+  public function login(){
+    // $products = $this->model->getListProducts();
+    $this->view->showHeader();
+    $this->view->showLogin();
+    $this->view->showFooter();
+  }
+  public function register(){
+    // $products = $this->model->getListProducts();
+    $this->view->showHeader();
+    $this->view->showRegister();
+    $this->view->showFooter();
+  }
+
   public function showListProducts(){
     $products = $this->model->getListProducts();
     $this->view->showHeader();
