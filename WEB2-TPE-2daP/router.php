@@ -17,14 +17,14 @@ if (!empty($_GET) && isset($_GET['action']) && !empty($_GET['action'])) { /* si 
 $params = explode('/', $action);
 
 // list    ->         tyresController->showList();
-// filter    ->        tyresController->filterBy();
-// add   ->         tyresController->addItem();
-// erase/:ID  ->     tyresController->removeTask($id);
-// edit/:ID  ->    tyresController->edit($id);
-// about ->             tyresController->showAbout();
-// login ->             tyresController->showLogin();
-// logout ->            tyresController->logout();
-// auth                 tyresController->auth(); // toma los datos del post y autentica al usuario
+// filter    ->       tyresController->filterBy();
+// add   ->           tyresController->addItem();
+// erase/:ID  ->      tyresController->removeTask($id);
+// edit/:ID  ->       tyresController->edit($id);
+// login ->           tyresController->showLogin();
+// register ->        tyresController->register(); // toma los datos del post y autentica al usuario
+// logout ->          tyresController->logout();
+// about ->           tyresController->showAbout();
 
 $control= new tyresController();
 
@@ -38,7 +38,7 @@ switch ($params[0]) {
       $control->showListProducts();
     break;
   case 'filter':
-    $control->filterBy($params[1]);  /*TODO hacer filtro */
+    $control->filterBy($params[1]);
     break;
     
     //*-------------- login y register--------------------
@@ -50,20 +50,24 @@ switch ($params[0]) {
       // echo ' hola register';
       $control->register();
     break;
+    case 'logout':  /*TODO hacer */
+      // echo ' hola register';
+      $control->logout(); 
+    break;
 
 
     //*-------------- Opciones de admin-------------------
   case 'add':
-      $control->addItem();
+      $control->addItem();  /*TODO hacer */
     break;
   case 'edit':
-      $control->editItem($id);
+      $control->editItem($id);  /*TODO hacer */
     break;
   case 'delete':
-      $control->deleteItem($id);
+      $control->deleteItem($id);  /*TODO hacer */
     break;
   case 'search':
-      $control->searchItem();
+      $control->searchItem(); /*TODO hacer */
     break;
 
   default:
