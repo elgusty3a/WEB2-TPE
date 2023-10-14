@@ -16,6 +16,7 @@ class tyresView {
       <meta charset="UTF-8">
       <base href="'.BASE_URL.'">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" type="image/png" href="'.BASE_URL.'img/icons8-tyre-64.png">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
       <!-- <link rel="stylesheet" href="'.BASE_URL.'ejer5.css"> -->
       <title>Tresa Neumaticos</title>
@@ -211,7 +212,7 @@ class tyresView {
 
 
   function renderListProduct($products,$log){
-    echo "<h1>Lista de productos</h1><br>";
+    echo '<h1 class="text-center text-warning">Lista de productos</h1><br>';
     // echo "<a href='index.html'> Volver </a>" ;
     // imprime la tabla de productos
     echo '
@@ -223,13 +224,13 @@ class tyresView {
         <div class="col-10">
         <table class="table table-dark table-striped table-sm">
         <thead>
-              <tr class="text-center table-primary fs-3">
-                <th scope="col">Marca</th>
-                <th scope="col">Medida</th>
-                <th scope="col">Ind. Carga</th>
-                <th scope="col">Ind. Vel.</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Categoria</th>
+              <tr class="text-center fs-3">
+                <th class="text-warning" scope="col">Marca</th>
+                <th class="text-warning" scope="col">Medida</th>
+                <th class="text-warning" scope="col">Ind. Carga</th>
+                <th class="text-warning" scope="col">Ind. Vel.</th>
+                <th class="text-warning" scope="col">Precio</th>
+                <th class="text-warning" scope="col">Categoria</th>
                 ';
                 if ($log){
                   echo '
@@ -281,7 +282,8 @@ class tyresView {
   }
 
   function renderListProductBy($products,$filter){
-    echo "<h1>Lista de ${filter}s</h1><br>";
+    echo '<div class="text-center text-warning">';
+    echo "<h1>Lista de ${filter}s</h1><br></div>";
     // echo "<a href='index.html'> Volver </a>" ;
     // imprime la tabla de productos
     echo '
@@ -293,10 +295,10 @@ class tyresView {
         <div class="col-8">
         <table class="table table-dark table-striped table-sm">
         <thead>
-              <tr class="text-center table-primary fs-2">
-                <th scope="col">Marca</th>
-                <th scope="col">Medida</th>
-                <th scope="col">Precio</th>
+              <tr class="text-center fs-2">
+                <th class="text-warning" scope="col">Marca</th>
+                <th class="text-warning" scope="col">Medida</th>
+                <th class="text-warning" scope="col">Precio</th>
                 
                 </tr>
                 <thead>
