@@ -327,7 +327,7 @@ class tyresView {
 
   function addItemForm(){
     echo'
-    <section class="container">
+    <section class="container bg-success col-12 col-md-8 col-lg-6 col-xl-5">
     <form action="" method="GET">
       <label class="col-form-label" for="marca">Marca:</label>
         <input class="form-control" type="text" name="marca" value="" placeholder="" id="marca" require="marca" /><br />
@@ -348,7 +348,7 @@ class tyresView {
         <input class="form-control" type="text" name="indiceVelocidad" value="" placeholder="" id="indiceVelocidad" /><br />
       
 
-      <button class="btn btn-success" value="btnagregarItem" type="submit" name="action">Agregar</button>
+      <button class="btn btn-secondary" value="btnagregarItem" type="submit" name="action">Agregar</button>
 
       <!-- <button class="btn btn-info" value="btnbuscar" type="submit" name="action">Buscar</button> -->
       <!-- <button class="btn btn-primary" value="btneditar" type="submit" name="action">Editar</button> -->
@@ -360,7 +360,7 @@ class tyresView {
   }
   function editItemForm($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria,$idProduct){
     echo'
-    <section class="container">
+    <section class="container bg-secondary col-12 col-md-8 col-lg-6 col-xl-5">
     <form action="" method="GET">
         <input class="form-control" type="hidden" name="idProduct" value="'.$idProduct.'" placeholder="" id="idProduct" require="idProduct" /><br />
       <label class="col-form-label" for="marca">Marca:</label>
