@@ -24,7 +24,7 @@ class tyresController{
       $this->view->showHeader();
       //$this->view->renderListProduct($products,false);
     }
-    //$this->view->showHeader();
+    $this->view->bodyHome();
     $this->view->showFooter();
   }
   public function login(){
@@ -67,6 +67,7 @@ class tyresController{
       session_start();
       $this->view->showHead();
       $this->view->showCRUD($_SESSION['userName']);
+      $this->view->bodyHome();
       $this->view->showFooter();
   }
   public function register(){
