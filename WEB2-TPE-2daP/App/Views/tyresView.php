@@ -29,7 +29,10 @@ class tyresView {
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
     
     <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">TresA Neumaticos</a>
+    <a href="#" class="d-block link-body-emphasis text-decoration-none" aria-expanded="false">
+      <img src="'.BASE_URL.'img/icons8-tyre-64.png" alt="mdo" width="32" height="32" class="rounded-circle">
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -70,7 +73,10 @@ class tyresView {
     echo '
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">TresA Neumaticos</a>
+        <a href="#" class="d-block link-body-emphasis text-decoration-none" aria-expanded="false">
+          <img src="'.BASE_URL.'img/icons8-tyre-64.png" alt="mdo" width="32" height="32" class="rounded-circle">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -111,7 +117,7 @@ class tyresView {
           <div class="col-md-3 col-md-auto text-end">
             <div class="d-flex flex-shrink-0 dropdown align-items-center">
               <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                <img src="https://github.com/elgusty3a.png" alt="mdo" width="32" height="32" class="rounded-circle">
               </a>
               <ul class="dropdown-menu bg-dark text-small shadow">
                 <li><a class="text-secondary dropdown-item" href="#">Nuevo proyecto...</a></li>
