@@ -65,8 +65,7 @@ switch ($params[0]) {
     case 'logout':
       $control->logout();
     break;
-    case 'homeAdmin':  /*TODO hacer */
-      // echo ' hola register';
+    case 'homeAdmin':
       $control->homeAdmin();
     break;
 
@@ -75,8 +74,16 @@ switch ($params[0]) {
   case 'add':
       $control->addItem();  /*TODO hacer */
     break;
+  case 'btnagregarItem':
+      $control->btnagregarItem();  /*TODO hacer */
+    break;
   case 'edit':
-      $control->editItem($id);  /*TODO hacer */
+    echo 'edit';
+    $control->editItem($_GET);  /*TODO hacer */
+    break;
+  case 'btneditItem':
+    var_dump( $_GET);;
+    $control->btneditItem($_GET);  /*TODO hacer */
     break;
   case 'delete':
       $control->deleteItem($id);  /*TODO hacer */

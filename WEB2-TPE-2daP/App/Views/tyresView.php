@@ -92,10 +92,10 @@ class tyresView {
               <a class="text-white nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Productos por categoria
               </a>
-              <ul class="dropdown-menu bg-warning">
-                <li><a class="dropdown-item" href="filter/cubierta">Cubiertas</a></li>
-                <li><a class="dropdown-item" href="filter/camara">Camaras</a></li>
-                <li><a class="dropdown-item" href="filter/llanta">Llantas</a></li>
+              <ul class="dropdown-menu bg-dark">
+                <li><a class="text-secondary dropdown-item" href="filter/cubierta">Cubiertas</a></li>
+                <li><a class="text-secondary dropdown-item" href="filter/camara">Camaras</a></li>
+                <li><a class="text-secondary dropdown-item" href="filter/llanta">Llantas</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -216,7 +216,7 @@ class tyresView {
 
 
 
-  function renderListProduct($products){
+  function renderListProduct($products,$log){
     echo "<h1>Lista de productos</h1><br>";
     // echo "<a href='index.html'> Volver </a>" ;
     // imprime la tabla de productos
@@ -226,27 +226,54 @@ class tyresView {
     <div class="col">
     
     </div>
-        <div class="col-8">
+        <div class="col-10">
         <table class="table table-dark table-striped table-sm">
         <thead>
-              <tr class="text-center table-primary fs-2">
+              <tr class="text-center table-primary fs-3">
                 <th scope="col">Marca</th>
                 <th scope="col">Medida</th>
+                <th scope="col">Ind. Carga</th>
+                <th scope="col">Ind. Vel.</th>
                 <th scope="col">Precio</th>
                 <th scope="col">Categoria</th>
+                ';
+                if ($log){
+                  echo '
+                <th scope="col">Accion</th>
+                ';
+                }
+                echo '
                 </tr>
                 <thead>
                 <tbody>
     ' ;
     foreach($products as $product) {
       echo '
-        <tr class="text-center fs-4">
+        <tr class="text-center fs-5">
           <td >'.$product->marca.'</td>
           <td >'.$product->medidas.'</td>
+          <td >'.$product->indice_carga.'</td>
+          <td >'.$product->indice_velocidad.'</td>
           <td >'.$product->precio.'</td>
           <td >'.$product->categoria.'</td>
+          ';
+          if ($log){
+            echo '<td>
+            <form action="" method="GET">
+              <input type="hidden" name="idProduct" value="'.$product->id_producto.'">
+              <input type="hidden" name="marca" value="'.$product->marca.'">
+              <input type="hidden" name="medida" value="'.$product->medidas.'">
+              <input type="hidden" name="indiceCarga" value="'.$product->indice_carga.'">
+              <input type="hidden" name="indiceVelocidad" value="'.$product->indice_velocidad.'">
+              <input type="hidden" name="precio" value="'.$product->precio.'">
+              <input type="hidden" name="categorias" value="'.$product->categoria.'">
+              <input type="submit" name="action" value="edit">
+            </form>
+            </td>';
+          }
+          echo '
           </tr>
-          ' ;
+          ';
         }
         echo ' </tbody>
         </table>
@@ -303,30 +330,72 @@ class tyresView {
     echo "<h2>Error! Género no especificado.</h2>" ;
   }
 
-  function addItem(){
+  function addItemForm(){
     echo'
     <section class="container">
     <form action="" method="GET">
-      <label class="col-form-label" for="idmateria">id:</label><input class="form-control" type="text" name="idmateria" value="" placeholder="" id="idmateria" require="idmateria" /><br />
-      <label class="col-form-label" for="materia">materia:</label><input class="form-control" type="text" name="materia" value="" placeholder="" id="materia" require="materia" /><br />
-      <label class="col-form-label" for="profe">profesor:</label><input class="form-control" type="text" name="profe" value="" placeholder="" id="profe" require="profe" /><br />
-      <button class="btn btn-success" value="btnagregar" type="submit" name="action">Agregar</button>
-      <button class="btn btn-info" value="btnbuscar" type="submit" name="action">Buscar</button>
-      <button class="btn btn-primary" value="btneditar" type="submit" name="action">Editar</button>
-      <button class="btn btn-danger" value="btneliminar" type="submit" name="action">Eliminar Materia</button>
-      <button class="btn btn-light" value="btnlimpiar" type="submit" name="action">Limpiar</button>
-      <button class="btn btn-light" value="btnarray" type="submit" name="action">array</button>
+      <label class="col-form-label" for="marca">Marca:</label>
+        <input class="form-control" type="text" name="marca" value="" placeholder="" id="marca" require="marca" /><br />
+      <label class="col-form-label" for="medida">Medida:</label>
+        <input class="form-control" type="text" name="medida" value="" placeholder="" id="medida" require="medida" /><br />
+      
+      <label class="col-form-label" for="categoria">Categoria:</label>
+        <select name="categorias" id="categorias">
+          <option value="1">Cubierta</option>
+          <option value="2">Camara</option>
+          <option value="3">Llanta</option>
+        </select><br>
+      <label class="col-form-label" for="precio">Precio:</label>
+        <input class="form-control" type="text" name="precio" value="" placeholder="" id="precio" require="precio" /><br />
+      <label class="col-form-label" for="indiceCarga">Indice Carga:</label>
+        <input class="form-control" type="text" name="indiceCarga" value="" placeholder="" id="indiceCarga"/><br />
+      <label class="col-form-label" for="indiceVelocidad">Indice Velocidad:</label>
+        <input class="form-control" type="text" name="indiceVelocidad" value="" placeholder="" id="indiceVelocidad" /><br />
+      
+
+      <button class="btn btn-success" value="btnagregarItem" type="submit" name="action">Agregar</button>
+
+      <!-- <button class="btn btn-info" value="btnbuscar" type="submit" name="action">Buscar</button> -->
+      <!-- <button class="btn btn-primary" value="btneditar" type="submit" name="action">Editar</button> -->
+      <!-- <button class="btn btn-danger" value="btneliminar" type="submit" name="action">Eliminar Materia</button> -->
+      <!-- <button class="btn btn-light" value="btnlimpiar" type="submit" name="action">Limpiar</button> -->
+      <!-- <button class="btn btn-light" value="btnarray" type="submit" name="action">array</button> -->
     </form>
-    <br />
-    <form action="" method="get">
-      <input type="hidden" name="id_product" id="id_product">
-      <label for=""></label><input type="text" name="nombre" id="name">
-      <label for=""></label><input type="text" name="tipo" id="category">
-      <label for=""></label><input type="text" name="medida" id="size">
-      <label for=""></label><input type="text" name="precio" id="price">
-      <input type="submit" value="">
+    ';
+  }
+  function editItemForm($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria,$idProduct){
+    echo'
+    <section class="container">
+    <form action="" method="GET">
+        <input class="form-control" type="hidden" name="idProduct" value="'.$idProduct.'" placeholder="" id="idProduct" require="idProduct" /><br />
+      <label class="col-form-label" for="marca">Marca:</label>
+        <input class="form-control" type="text" name="marca" value="'.$marca.'" placeholder="" id="marca" require="marca" /><br />
+      <label class="col-form-label" for="medida">Medida:</label>
+        <input class="form-control" type="text" name="medida" value="'.$medida.'" placeholder="" id="medida" require="medida" /><br />
+        
+      <label class="col-form-label" for="categoria">Categoria:</label>
+        <select required aria-required="true" name="categorias" id="categorias">
+          <option value=""> </option>
+          <option value="1">Cubierta</option>
+          <option value="2">Camara</option>
+          <option value="3">Llanta</option>
+        </select><br>
+      <label class="col-form-label" for="precio">Precio:</label>
+        <input class="form-control" type="text" name="precio" value="'.$precio.'" placeholder="" id="precio" require="precio" /><br />
+      <label class="col-form-label" for="indiceCarga">Indice Carga:</label>
+        <input class="form-control" type="text" name="indiceCarga" value="'.$indiceCarga.'" placeholder="" id="indiceCarga"/><br />
+      <label class="col-form-label" for="indiceVelocidad">Indice Velocidad:</label>
+        <input class="form-control" type="text" name="indiceVelocidad" value="'.$indiceVelocidad.'" placeholder="" id="indiceVelocidad" /><br />
+      
+
+      <button class="btn btn-warning" value="btneditItem" type="submit" name="action">Edit</button>
+
+      <!-- <button class="btn btn-info" value="btnbuscar" type="submit" name="action">Buscar</button> -->
+      <!-- <button class="btn btn-primary" value="btneditar" type="submit" name="action">Editar</button> -->
+      <!-- <button class="btn btn-danger" value="btneliminar" type="submit" name="action">Eliminar Materia</button> -->
+      <!-- <button class="btn btn-light" value="btnlimpiar" type="submit" name="action">Limpiar</button> -->
+      <!-- <button class="btn btn-light" value="btnarray" type="submit" name="action">array</button> -->
     </form>
-    </section>
     ';
   }
 

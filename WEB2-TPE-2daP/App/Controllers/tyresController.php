@@ -15,8 +15,16 @@ class tyresController{
 
   public function showHome(){
     // $products = $this->model->getListProducts();
+    session_start();
     $this->view->showHead();
-    $this->view->showHeader();
+    if (!empty($_SESSION) && $_SESSION['logged']){
+      $this->view->showCRUD($_SESSION['userName']);
+      //$this->view->renderListProduct($products,$_SESSION['logged']);
+    }else{
+      $this->view->showHeader();
+      //$this->view->renderListProduct($products,false);
+    }
+    //$this->view->showHeader();
     $this->view->showFooter();
   }
   public function login(){
@@ -89,30 +97,98 @@ class tyresController{
   }
 
   public function showListProducts(){
+    session_start();
     $products = $this->model->getListProducts();
+    // $log=$_SESSION['logged'];
     $this->view->showHead();
-    $this->view->showHeader();
-    $this->view->renderListProduct($products);
+    if (!empty($_SESSION) && $_SESSION['logged']){
+      $this->view->showCRUD($_SESSION['userName']);
+      $this->view->renderListProduct($products,$_SESSION['logged']);
+    }else{
+      $this->view->showHeader();
+      $this->view->renderListProduct($products,false);
+    }
     $this->view->showFooter();
 
   }
 
   public function filterBy($filter){
+    session_start();
     $products = $this->model->filterBy($filter);
     $this->view->showHead();
-    $this->view->showHeader();
+    //$this->view->showHeader();
+    if (!empty($_SESSION) && $_SESSION['logged']){
+      $this->view->showCRUD($_SESSION['userName']);
+      //$this->view->renderListProduct($products,$_SESSION['logged']);
+    }else{
+      $this->view->showHeader();
+      //$this->view->renderListProduct($products,false);
+    }
     $this->view->renderListProductBy($products,$filter);
     $this->view->showFooter();
   }
-  public function addItem(){ /*TODO hacer */
+  public function addItem(){
     session_start();
     $this->view->showHead();
     $this->view->showCRUD($_SESSION['userName']);
-    $this->view->addItem();
-    $products = $this->model->addItem();
-    $this->view->renderListProduct($products);
+    $this->view->addItemForm();
     $this->view->showFooter();
   }
+  public function btnagregarItem(){ /*TODO hacer */
+    session_start();
+    $this->view->showHead();
+    $this->view->showCRUD($_SESSION['userName']);
+
+    var_dump($_GET);
+    if (!empty($_GET) && (isset($_GET['marca']) && isset($_GET['medida']) && isset($_GET['categorias']))) {
+      $marca = $_GET['marca'];
+      $medida = $_GET['medida'];
+      $categoria = $_GET['categorias'];
+      $indiceCarga = $_GET['indiceCarga'];
+      $indiceVelocidad = $_GET['indiceVelocidad'];
+      $precio = $_GET['precio'];
+      $products = $this->model->btnagregarItem($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria);
+      var_dump($products);
+    }else{
+      echo 'Complete los cuadros';
+    }
+    $log=$_SESSION['logged'];
+    echo'<br><h1>'.$log.'</h1>';
+    $this->view->renderListProduct($products,$log);
+    $this->view->showFooter();
+  }
+
+  public function editItem($postEdit){
+    session_start();
+    $this->view->showHead();
+    $this->view->showCRUD($_SESSION['userName']);
+    $idProduct = $_GET['idProduct'];
+    $marca = $_GET['marca'];
+    $medida = $_GET['medida'];
+    $categoria = $_GET['categorias'];
+    $indiceCarga = $_GET['indiceCarga'];
+    $indiceVelocidad = $_GET['indiceVelocidad'];
+    $precio = $_GET['precio'];
+    $this->view->editItemForm($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria,$idProduct);
+    //$this->view->editItemForm();
+    $this->view->showFooter();
+  }
+  public function btneditItem($postEdit){
+    session_start();
+    $this->view->showHead();
+    $this->view->showCRUD($_SESSION['userName']);
+    $idProduct = $_GET['idProduct'];
+    $marca = $_GET['marca'];
+    $medida = $_GET['medida'];
+    $categoria = $_GET['categorias'];
+    $indiceCarga = $_GET['indiceCarga'];
+    $indiceVelocidad = $_GET['indiceVelocidad'];
+    $precio = $_GET['precio'];
+    $this->model->editItemForm($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria,$idProduct);
+    //$this->view->editItemForm();
+    $this->view->showFooter();
+  }
+
 
 
 }

@@ -41,10 +41,18 @@ class tyresModel{
   /**
    *? Agrega productos a la DB
    */
-  function addItem($filter){
+  function btnagregarItem($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria){
     $db = new PDO('mysql:host=localhost;' . 'dbname=tresa_neumaticos;charset=utf8', 'root', '');
-    $query = $db->prepare('');
-    $query->execute([$filter]);
+    $query = $db->prepare('INSERT INTO productos (marca,medidas,indice_carga,indice_velocidad,precio,id_categoria) VALUES (?,?,?,?,?,?)');
+    $query->execute([$marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria]);
+    $products = $query->fetchAll(PDO::FETCH_OBJ);
+    return $products;
+  }
+  function editItemForm($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria,$idProduct){
+    $db = new PDO('mysql:host=localhost;' . 'dbname=tresa_neumaticos;charset=utf8', 'root', '');
+    $sentence = "UPDATE `productos` SET `productos`.`marca`=?,`productos`.`medidas`=?,`productos`.`indice_carga`=?,`productos`.`indice_velocidad`=?,`productos`.`precio`=?,`productos`.`id_categoria`=? WHERE `productos`.`id_producto`=?";
+    $query = $db->prepare($sentence);
+    $query->execute([$marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria,$idProduct]);
     $products = $query->fetchAll(PDO::FETCH_OBJ);
     return $products;
   }
