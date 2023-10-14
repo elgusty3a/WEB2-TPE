@@ -5,6 +5,16 @@ class tyresModel{
 
 
   }
+
+  function singinUser($email){
+    $db = new PDO('mysql:host=localhost;' . 'dbname=tresa_neumaticos;charset=utf8', 'root', '');
+    $query = $db->prepare('SELECT * FROM usuarios u WHERE u.email = ?');
+    $query->execute([$email]);
+    $existUser = $query->fetch(PDO::FETCH_OBJ);
+    return $existUser;
+  }
+
+
   /**
    *? Obtiene la lista de productos de la DB
    */

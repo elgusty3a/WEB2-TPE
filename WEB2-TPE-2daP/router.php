@@ -48,11 +48,13 @@ switch ($params[0]) {
   case 'filter':
     $control->filterBy($params[1]);
     break;
-    
+
     //*-------------- login y register--------------------
     case 'login':
-      // echo ' hola register';
       $control->login();
+      break;
+    case 'btnSingInUser':
+      $control->singinUser();
       break;
     case 'register':
       $control->register();
@@ -60,9 +62,12 @@ switch ($params[0]) {
     case 'btnagregar':
       $control->newUser();
     break;
-    case 'logout':  /*TODO hacer */
-      // echo ' hola register';
+    case 'logout':
       $control->logout();
+    break;
+    case 'homeAdmin':  /*TODO hacer */
+      // echo ' hola register';
+      $control->homeAdmin();
     break;
 
 
