@@ -6,10 +6,13 @@ class tyresModel{
 
   }
 
-  function singinUser($email){
+  function singinUser($user){
+    // function singinUser($email){
     $db = new PDO('mysql:host=localhost;' . 'dbname=tresa_neumaticos;charset=utf8', 'root', '');
-    $query = $db->prepare('SELECT * FROM usuarios u WHERE u.email = ?');
-    $query->execute([$email]);
+    // $query = $db->prepare('SELECT * FROM usuarios u WHERE u.email = ?');
+    // $query->execute([$email]);
+    $query = $db->prepare('SELECT * FROM usuarios u WHERE u.nombreUsuario = ?');
+    $query->execute([$user]);
     $existUser = $query->fetch(PDO::FETCH_OBJ);
     return $existUser;
   }

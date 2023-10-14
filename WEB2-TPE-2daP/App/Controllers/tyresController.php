@@ -39,11 +39,13 @@ class tyresController{
     // $products = $this->model->getListProducts();
     $this->view->showHead();
     $this->view->showHeader();
-    if ((!empty($_POST))&&((!empty($_POST['email']) && isset($_POST['email'])) &&( !empty($_POST['pass']) && isset($_POST['pass'])))){
-      echo ' estoy en el if';
-      $email = $_POST['email'];
+    if ((!empty($_POST))&&((!empty($_POST['username']) && isset($_POST['username'])) &&( !empty($_POST['pass']) && isset($_POST['pass'])))){
+      // if ((!empty($_POST))&&((!empty($_POST['email']) && isset($_POST['email'])) &&( !empty($_POST['pass']) && isset($_POST['pass'])))){
+      // $email = $_POST['email'];
       $pass = $_POST['pass'];
-      $existUser = $this->model->singinUser($email);
+      $user = $_POST['username'];
+      $existUser = $this->model->singinUser($user);
+      // $existUser = $this->model->singinUser($email);
       if($existUser && password_verify($pass, $existUser->pass)){
         session_start();
         $_SESSION['userName']=$existUser->nombreUsuario;

@@ -637,10 +637,13 @@ class tyresView {
           <div class="card-body p-5 text-center">
             <form action="" method="POST" class="mb-md-3 mt-md-2 pb-3">
               <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-              <p class="text-white-50 mb-5">Please enter your e-mail and password!</p>
+              <!-- <p class="text-white-50 mb-5">Please enter your username and password!</p> -->
+              <p class="text-white-50 mb-5">Please enter your username and password!</p>
               <div class="form-outline form-white mb-4">
-                <input type="email" name="email" id="email" class="form-control form-control-lg" />
-                <label class="form-label" for="typeEmailX">Email</label>
+                <input type="text" name="username" id="username" class="form-control form-control-lg" />
+                <label class="form-label" for="username">Username</label>
+                <!-- <input type="text" name="username" id="username" class="form-control form-control-lg" /> -->
+                <!-- <label class="form-label" for="username">Username</label> -->
               </div>
               <div class="form-outline form-white mb-4">
                 <input type="password" name="pass" id="pass" class="form-control form-control-lg" />
