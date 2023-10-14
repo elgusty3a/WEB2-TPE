@@ -139,7 +139,6 @@ class tyresController{
     $this->view->showHead();
     $this->view->showCRUD($_SESSION['userName']);
 
-    var_dump($_GET);
     if (!empty($_GET) && (isset($_GET['marca']) && isset($_GET['medida']) && isset($_GET['categorias']))) {
       $marca = $_GET['marca'];
       $medida = $_GET['medida'];
@@ -147,13 +146,12 @@ class tyresController{
       $indiceCarga = $_GET['indiceCarga'];
       $indiceVelocidad = $_GET['indiceVelocidad'];
       $precio = $_GET['precio'];
-      $products = $this->model->btnagregarItem($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria);
-      var_dump($products);
+      $this->model->btnagregarItem($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria);
     }else{
       echo 'Complete los cuadros';
     }
     $log=$_SESSION['logged'];
-    echo'<br><h1>'.$log.'</h1>';
+    $products = $this->model->getListProducts();
     $this->view->renderListProduct($products,$log);
     $this->view->showFooter();
   }
@@ -170,7 +168,6 @@ class tyresController{
     $indiceVelocidad = $_GET['indiceVelocidad'];
     $precio = $_GET['precio'];
     $this->view->editItemForm($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria,$idProduct);
-    //$this->view->editItemForm();
     $this->view->showFooter();
   }
   public function btneditItem($postEdit){
@@ -186,6 +183,18 @@ class tyresController{
     $precio = $_GET['precio'];
     $this->model->editItemForm($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria,$idProduct);
     //$this->view->editItemForm();
+    $this->view->showFooter();
+  }
+
+  public function eraseItem($getItem){
+    session_start();
+    $this->view->showHead();
+    $this->view->showCRUD($_SESSION['userName']);
+    $id=$getItem['idProduct'];
+    $this->model->eraseItem($id);
+    $log=$_SESSION['logged'];
+    $products = $this->model->getListProducts();
+    $this->view->renderListProduct($products,$log);
     $this->view->showFooter();
   }
 

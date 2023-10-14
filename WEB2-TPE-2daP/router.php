@@ -72,21 +72,19 @@ switch ($params[0]) {
 
     //*-------------- Opciones de admin-------------------
   case 'add':
-      $control->addItem();  /*TODO hacer */
+      $control->addItem();
     break;
   case 'btnagregarItem':
-      $control->btnagregarItem();  /*TODO hacer */
+      $control->btnagregarItem();
     break;
   case 'edit':
-    echo 'edit';
-    $control->editItem($_GET);  /*TODO hacer */
+    $control->editItem($_GET);
     break;
   case 'btneditItem':
-    var_dump( $_GET);;
-    $control->btneditItem($_GET);  /*TODO hacer */
+    $control->btneditItem($_GET);
     break;
-  case 'delete':
-      $control->deleteItem($id);  /*TODO hacer */
+  case 'erase':
+      $control->eraseItem($_GET);
     break;
   case 'search':
       $control->searchItem(); /*TODO hacer */

@@ -106,8 +106,7 @@ class tyresView {
                 </button>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="add">Agregar Item</a></li>
-                  <li><a class="dropdown-item" href="edit">Editar Item</a></li>
-                  <li><a class="dropdown-item" href="erase">Eliminar Item</a></li>
+                  <li><a class="dropdown-item" href="list">Editar o Eliminar Item</a></li>
                   <li><a class="dropdown-item" href="search">Buscar Item</a></li>
                   <!-- <li><hr class="dropdown-divider"></li> -->
                 </ul>
@@ -120,10 +119,10 @@ class tyresView {
                 <img src="https://github.com/elgusty3a.png" alt="mdo" width="32" height="32" class="rounded-circle">
               </a>
               <ul class="dropdown-menu bg-dark text-small shadow">
-                <li><a class="text-secondary dropdown-item" href="#">Nuevo proyecto...</a></li>
-                <li><a class="text-secondary dropdown-item" href="#">Configuración</a></li>
-                <li><a class="text-secondary dropdown-item" href="#">Perfil</a></li>
-                <li><hr class="dropdown-divider"></li>
+              <!--  <li><a class="text-secondary dropdown-item" href="#">Nuevo proyecto...</a></li> -->
+              <!--  <li><a class="text-secondary dropdown-item" href="#">Configuración</a></li> -->
+              <!--  <li><a class="text-secondary dropdown-item" href="#">Perfil</a></li> -->
+              <!--  <li><hr class="dropdown-divider"></li> -->
                 <li><a class="text-secondary dropdown-item" href="logout">Cerrar sesión</a></li>
               </ul>
               <div class="align-items-center">
@@ -198,11 +197,6 @@ class tyresView {
               </div>
               <!-- <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p> -->
               <button class="btn btn-outline-light btn-lg px-5" name="action" value="btnagregar" type="submit">Register</button>
-              <div class="d-flex justify-content-center text-center mt-4 pt-1">
-                <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
-                <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
-                <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
-              </div>
             </form>
           </div>
         </div>
@@ -267,7 +261,8 @@ class tyresView {
               <input type="hidden" name="indiceVelocidad" value="'.$product->indice_velocidad.'">
               <input type="hidden" name="precio" value="'.$product->precio.'">
               <input type="hidden" name="categorias" value="'.$product->categoria.'">
-              <input type="submit" name="action" value="edit">
+              <button class="btn btn-secondary" type="submit" name="action" value="edit">Edit</button>
+              <button class="btn btn-danger" type="submit" name="action" value="erase">Erase</button>
             </form>
             </td>';
           }
