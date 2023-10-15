@@ -86,6 +86,18 @@ switch ($params[0]) {
   case 'erase':
       $control->eraseItem($_GET);
     break;
+  case 'adminCategories':
+      $control->adminCategories();
+    break;
+  case 'addCat':
+      $control->addCat();
+    break;
+  case 'btnagregarCat':
+      $control->btnagregarCat($_GET);
+    break;
+  case 'eraseCat':
+      $control->eraseCat($_GET);
+    break;
   case 'search':
       $control->searchItem(); /*TODO hacer */
     break;

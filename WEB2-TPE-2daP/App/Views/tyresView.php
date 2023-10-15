@@ -25,7 +25,7 @@ class tyresView {
     ';
   }
 
-  function showHeader(){
+  function showHeader($categorias){
     echo'
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
     
@@ -49,11 +49,14 @@ class tyresView {
         <a class="text-white nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         Productos por categoria
         </a>
-        <ul class="dropdown-menu bg-dark">
-        <li><a class="text-secondary dropdown-item" href="filter/cubierta">Cubiertas</a></li>
-        <li><a class="text-secondary dropdown-item" href="filter/camara">Camaras</a></li>
-        <li><a class="text-secondary dropdown-item" href="filter/llanta">Llantas</a></li>
-        </ul>
+        <ul class="dropdown-menu bg-dark">';
+              foreach($categorias as $cat) {
+                echo '<li><a class="text-secondary dropdown-item" href="filter/'.$cat->categoria.'">'.$cat->categoria.'</a></li>
+                <!-- <li><a class="text-secondary dropdown-item" href="filter/camara">Camaras</a></li> -->
+                <!-- <li><a class="text-secondary dropdown-item" href="filter/llanta">Llantas</a></li> -->
+                ';
+              }
+              echo '</ul>
         </li>
         <li class="nav-item">
           <a class="text-white nav-link" href="about">About</a>
@@ -70,7 +73,7 @@ class tyresView {
     
       }
 
-  function showCRUD($userName){
+  function showCRUD($userName,$categorias){
     echo '
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
       <div class="container-fluid">
@@ -93,11 +96,14 @@ class tyresView {
               <a class="text-white nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Productos por categoria
               </a>
-              <ul class="dropdown-menu bg-dark">
-                <li><a class="text-secondary dropdown-item" href="filter/cubierta">Cubiertas</a></li>
-                <li><a class="text-secondary dropdown-item" href="filter/camara">Camaras</a></li>
-                <li><a class="text-secondary dropdown-item" href="filter/llanta">Llantas</a></li>
-              </ul>
+              <ul class="dropdown-menu bg-dark">';
+              foreach($categorias as $cat) {
+                echo '<li><a class="text-secondary dropdown-item" href="filter/'.$cat->categoria.'">'.$cat->categoria.'</a></li>
+                <!-- <li><a class="text-secondary dropdown-item" href="filter/camara">Camaras</a></li> -->
+                <!-- <li><a class="text-secondary dropdown-item" href="filter/llanta">Llantas</a></li> -->
+                ';
+              }
+              echo '</ul>
             </li>
             <li class="nav-item dropdown">
               <div class="btn-group">
@@ -106,9 +112,10 @@ class tyresView {
                   <span class="visually-hidden">Toggle Dropdown</span>
                 </button>
                 <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="list">Listar Items</a></li>
                   <li><a class="dropdown-item" href="add">Agregar Item</a></li>
-                  <li><a class="dropdown-item" href="list">Editar o Eliminar Item</a></li>
                   <li><a class="dropdown-item" href="search">Buscar Item</a></li>
+                  <li><a class="dropdown-item" href="adminCategories">Administrar categorias</a></li>
                   <!-- <li><hr class="dropdown-divider"></li> -->
                 </ul>
               </div>
@@ -775,6 +782,77 @@ class tyresView {
     </div>
     </div>
       </section>' ;
+  }
+
+  function adminCategories($categorias,$log){
+    echo '<h1 class="text-center text-warning">Lista de Categorias</h1><br>';
+    // echo "<a href='index.html'> Volver </a>" ;
+    // imprime la tabla de productos
+    echo '
+        <section class="conteiner">
+        <div class="row g-0">
+    <div class="col">
+    
+    </div>
+        <div class="col-4">
+        <table class="table table-dark table-striped table-sm">
+        <thead>
+              <tr class="text-center fs-3">
+                <th class="text-warning" scope="col">Categoria</th>
+                ';
+                if ($log){
+                  echo '
+                <th scope="col">Accion</th>
+                ';
+                }
+                echo '
+                </tr>
+                <thead>
+                <tbody>
+    ' ;
+    foreach($categorias as $cat) {
+      echo '
+        <tr class="text-center fs-5">
+          <td >'.$cat->categoria.'</td>
+          ';
+          if ($log){
+            echo '<td>
+            <form action="" method="GET">
+              <input type="hidden" name="id" value="'.$cat->id.'">
+              <input type="hidden" name="categoria" value="'.$cat->categoria.'">
+              <button class="btn btn-secondary" type="submit" name="action" value="editCat">Edit</button>
+              <button class="btn btn-danger" type="submit" name="action" value="eraseCat">Erase</button>
+              </form>
+              </td>';
+            }
+            echo '
+            </tr>
+            ';
+          }
+          echo ' </tbody>
+          </table>
+          <a href="addCat"><button class="btn btn-success" type="button" name="addCat" value="addCat">Agregar nueva</button></a>
+        </div>
+        <div class="col">
+    
+    </div>
+    </div>
+      </section>';
+  }
+
+  function addCateg(){
+    echo'
+    <section class="container  col-12 p-5 col-md-8 col-lg-6 col-xl-5">
+    <div class="card bg-success border-0">
+    <form class="text-center p-3" action="" method="GET">
+      <h1>Nueva Categoria</h1>
+      <label class="col-form-label" for="categoria">Categoria:</label>
+        <input class="form-control" type="text" name="categoria" value="" placeholder="" id="categoria" require="categoria" /><br />
+      <button class="btn btn-secondary" value="btnagregarCat" type="submit" name="action">Agregar</button>
+    </form>
+    </div>
+    </section>
+    ';
   }
 
   function renderListProductBy($products,$filter){
