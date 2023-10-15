@@ -67,6 +67,14 @@ class tyresModel{
     $products = $query->fetchAll(PDO::FETCH_OBJ);
     return $products;
   }
+  function editCatForm($categoria,$idCat){
+    $db = new PDO('mysql:host=localhost;' . 'dbname=tresa_neumaticos;charset=utf8', 'root', '');
+    $sentence = "UPDATE `categorias` SET `categorias`.`categoria`=? WHERE `categorias`.`id`=?";
+    $query = $db->prepare($sentence);
+    $query->execute([$categoria,$idCat]);
+    $categorias = $query->fetchAll(PDO::FETCH_OBJ);
+    return $categorias;
+  }
 
   function eraseItem($id){
     $db = new PDO('mysql:host=localhost;' . 'dbname=tresa_neumaticos;charset=utf8', 'root', '');

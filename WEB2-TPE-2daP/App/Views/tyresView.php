@@ -854,6 +854,21 @@ class tyresView {
     </section>
     ';
   }
+  function editcatForm($categoria,$idCat){
+    echo'
+    <section class="container  col-12 p-5 col-md-8 col-lg-6 col-xl-5">
+    <div class="card bg-success border-0">
+    <form class="text-center p-3" action="" method="GET">
+      <h1>Nueva Categoria</h1>
+      <input class="form-control" type="hidden" name="idCat" value="'.$idCat.'" placeholder="" id="idCat" require="idCat" /><br />
+      <label class="col-form-label" for="categoria">Categoria:</label>
+        <input class="form-control" type="text" name="categoria" value="'.$categoria.'" placeholder="" id="categoria" require="categoria" /><br />
+      <button class="btn btn-secondary" value="btneditCat" type="submit" name="action">Agregar</button>
+    </form>
+    </div>
+    </section>
+    ';
+  }
 
   function renderListProductBy($products,$filter){
     echo '<div class="text-center text-warning">';
@@ -902,7 +917,8 @@ class tyresView {
 
   function addItemForm(){
     echo'
-    <section class="container bg-success col-12 col-md-8 col-lg-6 col-xl-5">
+    <section class="container mt-3 mb-3 col-12 col-md-8 col-lg-6 col-xl-5">
+    <div class="card p-3 bg-success border-0">
     <form action="" method="GET">
       <label class="col-form-label" for="marca">Marca:</label>
         <input class="form-control" type="text" name="marca" value="" placeholder="" id="marca" require="marca" /><br />
@@ -931,11 +947,14 @@ class tyresView {
       <!-- <button class="btn btn-light" value="btnlimpiar" type="submit" name="action">Limpiar</button> -->
       <!-- <button class="btn btn-light" value="btnarray" type="submit" name="action">array</button> -->
     </form>
+    </div>
+    </section>
     ';
   }
   function editItemForm($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria,$idProduct){
     echo'
-    <section class="container bg-secondary col-12 col-md-8 col-lg-6 col-xl-5">
+    <section class="container mt-3 mb-3 col-12 col-md-8 col-lg-6 col-xl-5">
+    <div class="card p-3 bg-secondary border-0">
     <form action="" method="GET">
         <input class="form-control" type="hidden" name="idProduct" value="'.$idProduct.'" placeholder="" id="idProduct" require="idProduct" /><br />
       <label class="col-form-label" for="marca">Marca:</label>
@@ -966,6 +985,8 @@ class tyresView {
       <!-- <button class="btn btn-light" value="btnlimpiar" type="submit" name="action">Limpiar</button> -->
       <!-- <button class="btn btn-light" value="btnarray" type="submit" name="action">array</button> -->
     </form>
+    </div>
+    </section>
     ';
   }
 

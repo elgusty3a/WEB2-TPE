@@ -186,6 +186,16 @@ class tyresController{
     $this->view->editItemForm($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria,$idProduct);
     $this->view->showFooter();
   }
+  public function editCat($getCat){
+    session_start();
+    $this->view->showHead();
+    $categories = $this->model->queryCategories();
+    $this->view->showCRUD($_SESSION['userName'],$categories);
+    $idCat = $_GET['id'];
+    $categoria = $_GET['categoria'];
+    $this->view->editcatForm($categoria,$idCat);
+    $this->view->showFooter();
+  }
   public function btneditItem($postEdit){
     session_start();
     $this->view->showHead();
@@ -200,6 +210,18 @@ class tyresController{
     $precio = $_GET['precio'];
     $this->model->editItemForm($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria,$idProduct);
     //$this->view->editItemForm();
+    $this->view->showFooter();
+  }
+  public function btneditCat($getCat){
+    session_start();
+    $this->view->showHead();
+    $categories = $this->model->queryCategories();
+    $this->view->showCRUD($_SESSION['userName'],$categories);
+    // var_dump($getCat);
+    // die;
+    $idCat = $_GET['idCat'];
+    $categoria = $_GET['categoria'];
+    $this->model->editCatForm($categoria,$idCat);
     $this->view->showFooter();
   }
 
