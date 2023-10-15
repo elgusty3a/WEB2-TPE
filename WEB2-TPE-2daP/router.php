@@ -6,6 +6,7 @@ define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] 
 
 
 require_once './App/Controllers/tyresController.php';
+require_once './App/Controllers/loginController.php';
 
 
 if (!empty($_GET) && isset($_GET['action']) && !empty($_GET['action'])) { /* si viene definida la reemplazamos*/
@@ -35,6 +36,7 @@ $params = explode('/', $action);
 // about ->           tyresController->showAbout();
 
 $control= new tyresController();
+$controlUser= new loginController();
 
 switch ($params[0]) {
   case 'home':
@@ -51,22 +53,22 @@ switch ($params[0]) {
 
     //*-------------- login y register--------------------
     case 'login':
-      $control->login();
+      $controlUser->login();
       break;
     case 'btnSingInUser':
-      $control->singinUser();
+      $controlUser->singinUser();
       break;
     case 'register':
-      $control->register();
+      $controlUser->register();
     break;
     case 'btnagregar':
-      $control->newUser();
+      $controlUser->newUser();
     break;
     case 'logout':
-      $control->logout();
+      $controlUser->logout();
     break;
     case 'homeAdmin':
-      $control->homeAdmin();
+      $controlUser->homeAdmin();
     break;
 
 
