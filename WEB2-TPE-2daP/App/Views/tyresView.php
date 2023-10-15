@@ -146,10 +146,10 @@ class tyresView {
     '
 
     <div class="conteiner-fluid text-center">
-    <div class="card text-center">
-      <div class="card-header">
-        Bienvenido a TresA Neumaticos
-      </div>
+    <div class="card border-0 text-center">
+      <!-- <div class="card-header"> -->
+      <!--   Bienvenido a TresA Neumaticos -->
+      <!-- </div> -->
       <div class="card-body">
         <h5 class="card-title">Comprar tu neumatico en TresA es un negocio redondo...&#128514&#128540&#128541</h5>
         <p class="card-text">Los empleados son todos unos gomas.</p>
@@ -159,14 +159,20 @@ class tyresView {
     </div>
     ';
     echo
-    '<div class="conteiner-fluid text-center">
+    '<div class="conteiner-fluid text-center align-items-center">
+    <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="card border-0 mb-3 col-sm-6">
+      <img src="'.BASE_URL.'img/rueda.jpg" class="card-img-top" alt="...">
+    </div>
+    <div class="col-sm-3"></div>
     <div class="row">
       <div class="col-sm-6 mb-3 mb-sm-0">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Sabes que es el indice de carga?</h5>
             <p class="card-text">Determina la carga máxima con la cual puede circular un neumático a la velocidad máxima estipulada por el fabricante. El neumático equivalente debe tener un índice de carga igual o superior al del original.</p>
-            <div class="card align-items-center">
+            <div class="card border-0 align-items-center">
             <table border="3" cellspacing="5" cellpadding="5">
             <tbody>
               <tr>
@@ -496,9 +502,8 @@ class tyresView {
         </div>
       </div>
       <div class="col-sm-6">
-        <div class="card align-items-center">
-        <div class="card mb-3">
-        <img src="'.BASE_URL.'img/rueda.jpg" class="card-img-top" alt="...">
+        <div class="card border-0 align-items-center">
+        
         <div class="card-body">
           <h5 class="card-title">Codigos de los neumaticos</h5>
           <p class="card-text">¿Cómo se expresa la dimensión de un neumático de automóvil?</p>
@@ -515,7 +520,7 @@ class tyresView {
           <div class="card-body">
             <h5 class="card-title">Tambien deberias informarte sobre el indice de velocidad.</h5>
             <p class="card-text">Determina la velocidad máxima con la cual puede circular un vehículo con un determinado tipo de neumáticos. El neumático equivalente debe tener un índice de velocidad igual al del original. Usar un neumático con códigos de velocidad diferentes al sugerido por fabricante es peligroso.</p>
-            <div class="card align-items-center">
+            <div class="card border-0 align-items-center">
             <table border="3" cellspacing="3" cellpadding="1">
             <tbody>
             <tr>
