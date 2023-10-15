@@ -167,7 +167,7 @@ class tyresView {
     ';
     echo
     '<div class="conteiner-fluid text-center align-items-center">
-    <div class="row">
+    <div class="row g-0">
     <div class="col-sm-3"></div>
     <div class="card border-0 mb-3 col-sm-6">
       <img src="'.BASE_URL.'img/rueda.jpg" class="card-img-top" alt="...">
@@ -175,7 +175,7 @@ class tyresView {
     <div class="col-sm-3"></div>
     <div class="row">
       <div class="col-sm-6 mb-3 mb-sm-0">
-        <div class="card">
+        <div class="card border-0">
           <div class="card-body">
             <h5 class="card-title">Sabes que es el indice de carga?</h5>
             <p class="card-text">Determina la carga máxima con la cual puede circular un neumático a la velocidad máxima estipulada por el fabricante. El neumático equivalente debe tener un índice de carga igual o superior al del original.</p>
@@ -993,6 +993,29 @@ class tyresView {
 
   function showFooter(){
     echo '
+    <div class="container-fluid g-0">
+
+  <footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2023 Copyright:
+    <a class="text-white" href="home/">Todos los derechos reservados. TresA Neumaticos</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+  
+</div>
+<!-- End of .container -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
