@@ -1,2 +1,2 @@
 #Smarty
-templates_c/
+templates_c/*.php

@@ -34,7 +34,6 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="list">Listar Items</a></li>
               <li><a class="dropdown-item" href="add">Agregar Item</a></li>
-              <li><a class="dropdown-item" href="search">Buscar Item</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="adminCategories">Administrar categorias</a></li>
             </ul>

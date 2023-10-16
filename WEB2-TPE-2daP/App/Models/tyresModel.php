@@ -1,14 +1,20 @@
 <?php
+
+require_once('./config.php');
 class tyresModel{
 
-  function __construct(){
+  private $db;
+  private $conn;
 
+  function __construct(){
+    $this->conn = new config;
+    $this->db = $this->conn->getDBConnection();
 
   }
 
   function singinUser($user){
     // function singinUser($email){
-    $db = new PDO('mysql:host=localhost;' . 'dbname=tresa_neumaticos;charset=utf8', 'root', '');
+    $db = $this->db;
     // $query = $db->prepare('SELECT * FROM usuarios u WHERE u.email = ?');
     // $query->execute([$email]);
     $query = $db->prepare('SELECT * FROM usuarios u WHERE u.nombreUsuario = ?');
@@ -18,7 +24,7 @@ class tyresModel{
   }
 
   function queryCategories(){
-    $db = new PDO('mysql:host=localhost;' . 'dbname=tresa_neumaticos;charset=utf8', 'root', '');
+    $db = $this->db;
     $query = $db->prepare('SELECT * FROM categorias');
     $query->execute();
     $categorias = $query->fetchAll(PDO::FETCH_OBJ);
@@ -30,7 +36,7 @@ class tyresModel{
    *? Obtiene la lista de productos de la DB
    */
   function getListProducts(){
-    $db = new PDO('mysql:host=localhost;' . 'dbname=tresa_neumaticos;charset=utf8', 'root', '');
+    $db = $this->db;
     $query = $db->prepare('SELECT * FROM productos p INNER JOIN categorias c ON p.id_categoria = c.id');
     $query->execute();
     $products = $query->fetchAll(PDO::FETCH_OBJ);
@@ -42,7 +48,7 @@ class tyresModel{
    */
 
   function filterBy($filter){
-    $db = new PDO('mysql:host=localhost;' . 'dbname=tresa_neumaticos;charset=utf8', 'root', '');
+    $db = $this->db;
     $query = $db->prepare('SELECT * FROM productos p INNER JOIN categorias c WHERE c.categoria = ? AND (p.id_categoria = c.id)');
     $query->execute([$filter]);
     $products = $query->fetchAll(PDO::FETCH_OBJ);
@@ -53,14 +59,14 @@ class tyresModel{
    *? Agrega productos a la DB
    */
   function btnagregarItem($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria){
-    $db = new PDO('mysql:host=localhost;' . 'dbname=tresa_neumaticos;charset=utf8', 'root', '');
+    $db = $this->db;
     $query = $db->prepare('INSERT INTO productos (marca,medidas,indice_carga,indice_velocidad,precio,id_categoria) VALUES (?,?,?,?,?,?)');
     $query->execute([$marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria]);
     $products = $query->fetchAll(PDO::FETCH_OBJ);
     return $products;
   }
   function editItemForm($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria,$idProduct){
-    $db = new PDO('mysql:host=localhost;' . 'dbname=tresa_neumaticos;charset=utf8', 'root', '');
+    $db = $this->db;
     $sentence = "UPDATE `productos` SET `productos`.`marca`=?,`productos`.`medidas`=?,`productos`.`indice_carga`=?,`productos`.`indice_velocidad`=?,`productos`.`precio`=?,`productos`.`id_categoria`=? WHERE `productos`.`id_producto`=?";
     $query = $db->prepare($sentence);
     $query->execute([$marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria,$idProduct]);
@@ -68,7 +74,7 @@ class tyresModel{
     return $products;
   }
   function editCatForm($categoria,$idCat){
-    $db = new PDO('mysql:host=localhost;' . 'dbname=tresa_neumaticos;charset=utf8', 'root', '');
+    $db = $this->db;
     $sentence = "UPDATE `categorias` SET `categorias`.`categoria`=? WHERE `categorias`.`id`=?";
     $query = $db->prepare($sentence);
     $query->execute([$categoria,$idCat]);
@@ -77,7 +83,7 @@ class tyresModel{
   }
 
   function eraseItem($id){
-    $db = new PDO('mysql:host=localhost;' . 'dbname=tresa_neumaticos;charset=utf8', 'root', '');
+    $db = $this->db;
     $sentence = "DELETE FROM `productos` WHERE `productos`.`id_producto`=?;";
     $query = $db->prepare($sentence);
     $query->execute([$id]);
@@ -85,7 +91,7 @@ class tyresModel{
     return $products;
   }
   function eraseCat($id){
-    $db = new PDO('mysql:host=localhost;' . 'dbname=tresa_neumaticos;charset=utf8', 'root', '');
+    $db = $this->db;
     $sentence = "DELETE FROM `categorias` WHERE `categorias`.`id`=?;";
     $query = $db->prepare($sentence);
     $query->execute([$id]);
@@ -96,13 +102,13 @@ class tyresModel{
   
   function addUser($nombreUsuario,$email,$pass){
     $pass = password_hash($pass, PASSWORD_BCRYPT);
-    $db = new PDO('mysql:host=localhost;' . 'dbname=tresa_neumaticos;charset=utf8', 'root', '');
+    $db = $this->db;
     $query = $db->prepare("INSERT INTO usuarios (nombreUsuario,email,pass) VALUES (?,?,?)");
     $query->execute([$nombreUsuario, $email, $pass]);
   }
   
   function btnagregarCat($categoria){
-    $db = new PDO('mysql:host=localhost;' . 'dbname=tresa_neumaticos;charset=utf8', 'root', '');
+    $db = $this->db;
     $query = $db->prepare('INSERT INTO categorias (categoria) VALUES (?)');
     $query->execute([$categoria]);
     $categorias = $query->fetchAll(PDO::FETCH_OBJ);

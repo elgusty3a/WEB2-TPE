@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-10-2023 a las 16:20:51
+-- Tiempo de generación: 16-10-2023 a las 20:11:35
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -39,9 +39,9 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id`, `categoria`) VALUES
-(1, 'cubierta'),
-(2, 'camara'),
-(3, 'llanta');
+(1, 'Cubierta'),
+(2, 'Camara'),
+(3, 'Llanta');
 
 -- --------------------------------------------------------
 
@@ -64,7 +64,7 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id_producto`, `marca`, `medidas`, `indice_carga`, `indice_velocidad`, `precio`, `id_categoria`) VALUES
-(1, 'Michelin', '165/70 R13', 79, 'T', 115000, 1),
+(1, 'Michelin', '165/70 R13', 79, 'T', 11500, 1),
 (2, 'Michelin', '185/60 R14', 82, 'H', 117000, 1),
 (3, 'Firestone', '165/70 R13', 79, 'T', 112000, 1),
 (4, 'Firestone', '185/60 R14', 82, 'H', 114500, 1),
@@ -91,7 +91,9 @@ INSERT INTO `productos` (`id_producto`, `marca`, `medidas`, `indice_carga`, `ind
 (25, 'R1 SPORT', '15X8 6-114.3', 0, '', 28800, 3),
 (26, 'MSA WHEELS ', '14X7 4-110', 0, '', 32450, 3),
 (27, 'BLANK- CLASIC', '15X7', 0, '', 36650, 3),
-(28, 'PRW', '13X5 4-100', 0, '', 25800, 3);
+(28, 'PRW', '13X5 4-100', 0, '', 25800, 3),
+(32, 'Goodyear', '215/50 R17', 91, 'V', 210650, 1),
+(38, 'Drook', '80/100 - 14', 0, '', 5530, 2);
 
 -- --------------------------------------------------------
 
@@ -105,6 +107,14 @@ CREATE TABLE `usuarios` (
   `email` varchar(50) NOT NULL,
   `pass` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombreUsuario`, `email`, `pass`) VALUES
+(1, 'Gustavo Arias', 'gustavoarias3a@gmail.com', '$2y$10$i9WiWDC.gqusSMLWVeP96u0PrgTyhyicR1SSRGeOcBucHBFPzoL5K'),
+(2, 'webadmin', 'webadmin@unicen.com', '$2y$10$u4heaCRCcQt014uAUpW6KuUz.WxxVZOVIAYhxdf9VUCmh6ju5XPDG');
 
 --
 -- Índices para tablas volcadas
@@ -139,19 +149,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

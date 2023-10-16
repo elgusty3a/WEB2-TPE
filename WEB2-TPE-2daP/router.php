@@ -108,9 +108,6 @@ switch ($params[0]) {
   case 'btneditCat':
       $control->btneditCat($_GET);
     break;
-  case 'search':
-      $control->searchItem(); /*TODO hacer */
-    break;
 
   default:
   echo ('404 Page not found');
