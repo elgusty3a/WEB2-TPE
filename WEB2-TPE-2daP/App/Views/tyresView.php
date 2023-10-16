@@ -74,6 +74,9 @@ class tyresView {
   function renderError() {
     echo "<h2>Error! Género no especificado.</h2>" ;
   }
+  function errorEraseCat() {
+    echo '<h2 class="bg-danger text-center" Style="color:white;">No se puede eliminar la categoria, tiene articulos reacionados</h2>' ;
+  }
 
   function addItemForm($categorias){
     $this->smart->assign('categorias',$categorias);

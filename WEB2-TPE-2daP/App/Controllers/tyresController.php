@@ -189,9 +189,16 @@ class tyresController{
     // var_dump($getCat);
     // die;
     $id=$getCat['id'];
-    $this->model->eraseCat($id);
+    $cat=$getCat['categoria'];
+    $productByCat= $this->model->filterBy($cat);
     $categories = $this->model->queryCategories();
     $this->view->showCRUD($_SESSION['userName'],$categories);
+    if(!$productByCat){
+      $this->model->eraseCat($id);
+    }else{
+      // echo 'NO NO esa categoria tiene articulos!!';
+      $this->view->errorEraseCat();
+    }
     $this->view->adminCategories($categories,$_SESSION['userName']);
     $this->view->showFooter();
   }
