@@ -1,22 +1,42 @@
 <?php
 
 require_once('./config.php');
+require_once './App/Views/tyresView.php';
 class tyresModel{
 
   private $db;
-  private $conn;
+  private $view;
 
-  function __construct(){
-    $this->conn = new config;
-    $this->db = $this->conn->getDBConnection();
+    public function __construct()
+    {
+      $this->view = new tyresView();
+      $this->getDBConnection();
+    }
 
-  }
+
+    private function getDBConnection()
+    {
+        global $dbconect;
+        $host = $dbconect['host'];
+        $db = $dbconect['db'];
+        $charset = $dbconect['charset'];
+        $user = $dbconect['user'];
+        $pass = $dbconect['password'];
+
+        $dbString = "mysql:host=$host;dbname=$db;charset=$charset";
+
+        try {
+            $this->db = new PDO($dbString, $user, $pass);
+        } catch(PDOException $e) {
+          $this->view->errorDBConect();
+          die;
+    }
+}
 
   function singinUser($user){
-    // function singinUser($email){
+
     $db = $this->db;
-    // $query = $db->prepare('SELECT * FROM usuarios u WHERE u.email = ?');
-    // $query->execute([$email]);
+
     $query = $db->prepare('SELECT * FROM usuarios u WHERE u.nombreUsuario = ?');
     $query->execute([$user]);
     $existUser = $query->fetch(PDO::FETCH_OBJ);
