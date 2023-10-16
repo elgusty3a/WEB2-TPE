@@ -50,7 +50,7 @@
           <!-- /**TODO if logged -->
             <li><a class="text-secondary dropdown-item" href="logout">Cerrar sesión</a></li>
           </ul>
-          <div class="align-items-center">
+          <div class="align-items-center ms-3">
             <p class="text-white mb-0">Bienvenido {$userName}</p>
           </div>
         </div>

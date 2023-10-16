@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2023-10-15 22:12:45
+/* Smarty version 4.3.4, created on 2023-10-16 04:49:40
   from 'C:\xampp\htdocs\TUDAI-xampp\WEB2-TPE\WEB2-TPE-2daP\templates\navUser.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_652c47bd5bcd65_72072068',
+  'unifunc' => 'content_652ca4c4271396_66079381',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'db3ff7aa03a20a2545e75c01385cd1ec903814c8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TUDAI-xampp\\WEB2-TPE\\WEB2-TPE-2daP\\templates\\navUser.tpl',
-      1 => 1697400761,
+      1 => 1697424576,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_652c47bd5bcd65_72072068 (Smarty_Internal_Template $_smarty_tpl) {
+function content_652ca4c4271396_66079381 (Smarty_Internal_Template $_smarty_tpl) {
 ?><nav class="navbar navbar-expand-lg bg-dark navbar-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">TresA Neumaticos</a>
@@ -83,7 +83,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
           <!-- /**TODO if logged -->
             <li><a class="text-secondary dropdown-item" href="logout">Cerrar sesión</a></li>
           </ul>
-          <div class="align-items-center">
+          <div class="align-items-center ms-3">
             <p class="text-white mb-0">Bienvenido <?php echo $_smarty_tpl->tpl_vars['userName']->value;?>
 </p>
           </div>
