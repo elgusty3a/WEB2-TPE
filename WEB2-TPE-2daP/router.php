@@ -50,6 +50,9 @@ switch ($params[0]) {
   case 'filter':
     $control->filterBy($params[1]);
     break;
+  case 'about':
+    $control->about();
+    break;
 
     //*-------------- login y register--------------------
     case 'login':
@@ -70,7 +73,6 @@ switch ($params[0]) {
     case 'homeAdmin':
       $controlUser->homeAdmin();
     break;
-
 
     //*-------------- Opciones de admin-------------------
   case 'add':

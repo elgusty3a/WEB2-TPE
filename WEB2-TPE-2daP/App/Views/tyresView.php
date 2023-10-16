@@ -96,5 +96,7 @@ class tyresView {
     $this->smart->display('templates/footer.tpl');
   }
 
-
+  function about(){
+    $this->smart->display('templates/about.tpl');
+  }
 }

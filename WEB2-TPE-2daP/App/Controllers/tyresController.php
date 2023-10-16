@@ -103,14 +103,6 @@ class tyresController{
     $indiceCarga = $getEdit['indiceCarga'];
     $indiceVelocidad = $getEdit['indiceVelocidad'];
     $precio = $getEdit['precio'];
-
-    // $idProduct = $_GET['idProduct'];
-    // $marca = $_GET['marca'];
-    // $medida = $_GET['medida'];
-    // $categoria = $_GET['categorias'];
-    // $indiceCarga = $_GET['indiceCarga'];
-    // $indiceVelocidad = $_GET['indiceVelocidad'];
-    // $precio = $_GET['precio'];
     $this->view->editItemForm($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria,$idProduct,$categories);
     $this->view->showFooter();
   }
@@ -202,6 +194,20 @@ class tyresController{
     $this->view->showCRUD($_SESSION['userName'],$categories);
     $this->view->adminCategories($categories,$_SESSION['userName']);
     $this->view->showFooter();
+  }
+
+  public function about(){
+    session_start();
+    $this->view->showHead();
+    $categories = $this->model->queryCategories();
+    if (!empty($_SESSION) && $_SESSION['logged']){
+      $this->view->showCRUD($_SESSION['userName'],$categories);
+    }else{
+      $this->view->showHeader($categories);
+    }
+    $this->view->about();
+    $this->view->showFooter();
+
   }
 
 
