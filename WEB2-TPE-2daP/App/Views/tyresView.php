@@ -71,12 +71,13 @@ class tyresView {
     $this->smart->assign('filter',$filter);
     $this->smart->display('templates/renderListBy.tpl');
   }
-  function renderError() {
-    echo "<h2>Error! Género no especificado.</h2>" ;
+  function errorDBConect() {
+    $this->smart->display('templates/errorDBConnect.tpl');
   }
   function errorEraseCat() {
     echo '<h2 class="bg-danger text-center" Style="color:white;">No se puede eliminar la categoria, tiene articulos reacionados</h2>' ;
   }
+
 
   function addItemForm($categorias){
     $this->smart->assign('categorias',$categorias);
