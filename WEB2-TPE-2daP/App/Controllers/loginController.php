@@ -62,7 +62,6 @@ class loginController{
       $this->view->showFooter();
   }
   public function register(){
-    // $products = $this->model->getListProducts();
     $this->view->showHead();
     $categories = $this->model->queryCategories();
     $this->view->showHeader($categories);

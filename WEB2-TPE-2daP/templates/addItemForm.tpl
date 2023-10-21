@@ -6,7 +6,7 @@
         <input class="form-control" type="text" name="marca" value="" placeholder="" id="marca" require="marca" /><br />
       <label class="col-form-label" for="medida">Medida:</label>
         <input class="form-control" type="text" name="medida" value="" placeholder="" id="medida" require="medida" /><br />
-      
+
       <label class="col-form-label" for="categoria">Categoria:</label>
         <select name="categorias" id="categorias">
           <option value=""> </option>
@@ -20,15 +20,8 @@
         <input class="form-control" type="text" name="indiceCarga" value="" placeholder="" id="indiceCarga"/><br />
       <label class="col-form-label" for="indiceVelocidad">Indice Velocidad:</label>
         <input class="form-control" type="text" name="indiceVelocidad" value="" placeholder="" id="indiceVelocidad" /><br />
-      
 
       <button class="btn btn-secondary" value="btnagregarItem" type="submit" name="action">Agregar</button>
-
-      <!-- <button class="btn btn-info" value="btnbuscar" type="submit" name="action">Buscar</button> -->
-      <!-- <button class="btn btn-primary" value="btneditar" type="submit" name="action">Editar</button> -->
-      <!-- <button class="btn btn-danger" value="btneliminar" type="submit" name="action">Eliminar Materia</button> -->
-      <!-- <button class="btn btn-light" value="btnlimpiar" type="submit" name="action">Limpiar</button> -->
-      <!-- <button class="btn btn-light" value="btnarray" type="submit" name="action">array</button> -->
     </form>
     </div>
     </section>

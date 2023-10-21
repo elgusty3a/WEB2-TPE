@@ -1,9 +1,6 @@
 <?php
 define ('PATH_SITE', dirname(__FILE__));
-// echo '<h1>'.PATH_SITE.'</h1><br>';
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
-// echo '<h2>'.BASE_URL.'</h2>';
-
 
 require_once './App/Controllers/tyresController.php';
 require_once './App/Controllers/loginController.php';
@@ -20,20 +17,6 @@ if (!empty($_POST) && isset($_POST['action']) && !empty($_POST['action'])) { /* 
 
 $params = explode('/', $action);
 
-// list    ->         tyresController->showList();
-// filter    ->       tyresController->filterBy();
-
-// login ->           tyresController->showLogin();
-// register ->        tyresController->register(); // toma los datos del post y autentica al usuario
-// logout ->          tyresController->logout();
-
-// add   ->           tyresController->addItem();
-// edit/:ID  ->       tyresController->edit($id);
-// erase/:ID  ->      tyresController->eraseItem($id);
-// search/:ID  ->     tyresController->searchItem($id);
-
-
-// about ->           tyresController->showAbout();
 
 $control= new tyresController();
 $controlUser= new loginController();
@@ -46,6 +29,9 @@ switch ($params[0]) {
   //*--------------- Opciones del Nav ------------------
   case 'list':
       $control->showListProducts();
+    break;
+  case 'details':
+      $control->details($_GET);
     break;
   case 'filter':
     $control->filterBy($params[1]);

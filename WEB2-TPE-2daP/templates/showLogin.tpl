@@ -7,19 +7,15 @@
           <div class="card-body p-5 text-center">
             <form action="" method="POST" class="mb-md-3 mt-md-2 pb-3">
               <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-              <!-- <p class="text-white-50 mb-5">Please enter your username and password!</p> -->
               <p class="text-white-50 mb-5">Please enter your username and password!</p>
               <div class="form-outline form-white mb-4">
                 <input type="text" name="username" id="username" class="form-control form-control-lg" />
                 <label class="form-label" for="username">Username</label>
-                <!-- <input type="text" name="username" id="username" class="form-control form-control-lg" /> -->
-                <!-- <label class="form-label" for="username">Username</label> -->
               </div>
               <div class="form-outline form-white mb-4">
                 <input type="password" name="pass" id="pass" class="form-control form-control-lg" />
                 <label class="form-label" for="typePasswordX">Password</label>
               </div>
-              <!-- <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p> -->
               <button class="btn btn-outline-light btn-lg px-5" name="action" value="btnSingInUser" type="submit">Login</button>
             </form>
             <div>

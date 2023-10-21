@@ -50,6 +50,13 @@ class tyresView {
     $this->smart->assign('log',$log);
     $this->smart->display('templates/renderListProduct.tpl');
   }
+  function details($getDetails,$nav,$log,$categorias){
+    $this->smart->assign('products',$getDetails);
+    $this->smart->assign('categorias',$categorias);
+    $this->smart->assign('nav',$nav);
+    $this->smart->assign('userName',$log);
+    $this->smart->display('templates/details.tpl');
+  }
 
   function adminCategories($categorias,$log){
     $this->smart->assign('categorias',$categorias);

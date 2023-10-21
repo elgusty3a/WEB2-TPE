@@ -7,7 +7,7 @@
         <input class="form-control" type="text" name="marca" value="{$marca}" placeholder="" id="marca" require="marca" /><br />
       <label class="col-form-label" for="medida">Medida:</label>
         <input class="form-control" type="text" name="medida" value="{$medida}" placeholder="" id="medida" require="medida" /><br />
-        
+
       <label class="col-form-label" for="categoria">Categoria:</label>
         <select required aria-required="true" name="categorias" id="categorias">
         <option value=""> </option>
@@ -21,15 +21,9 @@
         <input class="form-control" type="text" name="indiceCarga" value="{$indiceCarga}" placeholder="" id="indiceCarga"/><br />
       <label class="col-form-label" for="indiceVelocidad">Indice Velocidad:</label>
         <input class="form-control" type="text" name="indiceVelocidad" value="{$indiceVelocidad}" placeholder="" id="indiceVelocidad" /><br />
-      
 
       <button class="btn btn-warning" value="btneditItem" type="submit" name="action">Edit</button>
 
-      <!-- <button class="btn btn-info" value="btnbuscar" type="submit" name="action">Buscar</button> -->
-      <!-- <button class="btn btn-primary" value="btneditar" type="submit" name="action">Editar</button> -->
-      <!-- <button class="btn btn-danger" value="btneliminar" type="submit" name="action">Eliminar Materia</button> -->
-      <!-- <button class="btn btn-light" value="btnlimpiar" type="submit" name="action">Limpiar</button> -->
-      <!-- <button class="btn btn-light" value="btnarray" type="submit" name="action">array</button> -->
     </form>
     </div>
     </section>

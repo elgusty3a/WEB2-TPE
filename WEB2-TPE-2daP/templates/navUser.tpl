@@ -46,7 +46,6 @@
             <img src="https://github.com/elgusty3a.png" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
           <ul class="dropdown-menu bg-dark text-small shadow">
-          <!-- /**TODO if logged -->
             <li><a class="text-secondary dropdown-item" href="logout">Cerrar sesión</a></li>
           </ul>
           <div class="align-items-center ms-3">

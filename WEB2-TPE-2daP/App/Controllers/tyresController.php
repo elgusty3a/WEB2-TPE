@@ -41,7 +41,21 @@ class tyresController{
       $this->view->renderListProduct($products,false);
     }
     $this->view->showFooter();
-
+  }
+  
+  public function details($getDetails){
+    session_start();
+    $categories = $this->model->queryCategories();
+    if (!empty($_SESSION) && $_SESSION['logged']){
+      $log = $_SESSION['userName'];
+      $nav = "navUser.tpl";
+      $this->view->details($getDetails,$nav,$log,$categories);
+    }else{
+      $log = "";
+      $nav = "nav.tpl";
+      $this->view->details($getDetails,$nav,$log,$categories);
+    }
+    // $this->view->showFooter();
   }
 
   public function filterBy($filter){
@@ -52,10 +66,8 @@ class tyresController{
     $categories = $this->model->queryCategories();
     if (!empty($_SESSION) && $_SESSION['logged']){
       $this->view->showCRUD($_SESSION['userName'],$categories);
-      //$this->view->renderListProduct($products,$_SESSION['logged']);
     }else{
       $this->view->showHeader($categories);
-      //$this->view->renderListProduct($products,false);
     }
     $this->view->renderListProductBy($products,$filter);
     $this->view->showFooter();
@@ -129,7 +141,6 @@ class tyresController{
     $indiceVelocidad = $_GET['indiceVelocidad'];
     $precio = $_GET['precio'];
     $this->model->editItemForm($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria,$idProduct);
-    //$this->view->editItemForm();
     $this->view->showFooter();
   }
   public function btneditCat($getCat){
@@ -137,8 +148,6 @@ class tyresController{
     $this->view->showHead();
     $categories = $this->model->queryCategories();
     $this->view->showCRUD($_SESSION['userName'],$categories);
-    // var_dump($getCat);
-    // die;
     $idCat = $_GET['idCat'];
     $categoria = $_GET['categoria'];
     $this->model->editCatForm($categoria,$idCat);
@@ -186,8 +195,6 @@ class tyresController{
   public function eraseCat($getCat){
     session_start();
     $this->view->showHead();
-    // var_dump($getCat);
-    // die;
     $id=$getCat['id'];
     $cat=$getCat['categoria'];
     $productByCat= $this->model->filterBy($cat);
@@ -196,7 +203,6 @@ class tyresController{
     if(!$productByCat){
       $this->model->eraseCat($id);
     }else{
-      // echo 'NO NO esa categoria tiene articulos!!';
       $this->view->errorEraseCat();
     }
     $this->view->adminCategories($categories,$_SESSION['userName']);
