@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">TresA Neumaticos</a>
+    <a class="navbar-brand" href="home">TresA Neumaticos</a>
     <a href="home" class="d-block link-body-emphasis text-decoration-none" aria-expanded="false">
       <img src="{BASE_URL}img/icons8-tyre-64.png" alt="mdo" width="32" height="32" class="rounded-circle">
     </a>
@@ -43,7 +43,7 @@
       <div class="col-md-3 col-md-auto text-end">
         <div class="d-flex flex-shrink-0 dropdown align-items-center">
           <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/elgusty3a.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            <img src="{BASE_URL}img/user_circle2.png" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
           <ul class="dropdown-menu bg-dark text-small shadow">
             <li><a class="text-secondary dropdown-item" href="logout">Cerrar sesión</a></li>

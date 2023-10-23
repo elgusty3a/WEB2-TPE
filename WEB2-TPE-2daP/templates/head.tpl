@@ -9,7 +9,7 @@
       <link rel="icon" type="image/png" href="{BASE_URL}img/icons8-tyre-64.png">
       <link href="{BASE_URL}css/bootstrap.min.css" rel="stylesheet">
       <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"> -->
-      <!-- <link rel="stylesheet" href="'.BASE_URL.'TPE.css"> -->
+      <link rel="stylesheet" href="{BASE_URL}css/TPE.css">
       <title>Tresa Neumaticos</title>
     </head>
     <body>

@@ -54,7 +54,7 @@ class loginController{
     }
 
     public function homeAdmin(){
-      session_start();
+      // session_start();
       $this->view->showHead();
       $categories = $this->model->queryCategories();
       $this->view->showCRUD($_SESSION['userName'],$categories);

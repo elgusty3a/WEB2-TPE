@@ -25,7 +25,7 @@
                 <td>{$product->marca}</td>
                 <td>{$product->medidas}</td>
                 <td>
-                  <form action="" method="GET">
+                  <form action="details" method="POST">
                     <input type="hidden" name="idProduct" value="{$product->id_producto}">
                     <input type="hidden" name="marca" value="{$product->marca}">
                     <input type="hidden" name="medida" value="{$product->medidas}">
@@ -33,7 +33,7 @@
                     <input type="hidden" name="indiceVelocidad" value="{$product->indice_velocidad}">
                     <input type="hidden" name="precio" value="{$product->precio}">
                     <input type="hidden" name="categorias" value="{$product->categoria}">
-                    <button class="btn btn-success" type="submit" name="action" value="details">Detalles</button>
+                    <button class="btn btn-success" type="submit" name="action">Detalles</button>
                   </form>
                 </td>
               </tr>

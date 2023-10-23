@@ -31,7 +31,7 @@ switch ($params[0]) {
       $control->showListProducts();
     break;
   case 'details':
-      $control->details($_GET);
+      $control->details();
     break;
   case 'filter':
     $control->filterBy($params[1]);
@@ -68,13 +68,13 @@ switch ($params[0]) {
       $control->btnagregarItem();
     break;
   case 'edit':
-    $control->editItem($_GET);
+    $control->editItem();
     break;
   case 'btneditItem':
-    $control->btneditItem($_GET);
+    $control->btneditItem();
     break;
-  case 'erase':
-      $control->eraseItem($_GET);
+  case 'eraseItem':
+      $control->eraseItem();
     break;
   case 'adminCategories':
       $control->adminCategories();
@@ -83,16 +83,16 @@ switch ($params[0]) {
       $control->addCat();
     break;
   case 'btnagregarCat':
-      $control->btnagregarCat($_GET);
+      $control->btnagregarCat();
     break;
   case 'eraseCat':
-      $control->eraseCat($_GET);
+      $control->eraseCat();
     break;
   case 'editCat':
-      $control->editCat($_GET);
+      $control->editCat();
     break;
   case 'btneditCat':
-      $control->btneditCat($_GET);
+      $control->btneditCat();
     break;
 
   default:

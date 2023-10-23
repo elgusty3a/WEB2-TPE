@@ -1,6 +1,6 @@
 <section class="container mt-3 mb-3 col-12 col-md-8 col-lg-6 col-xl-5">
     <div class="card p-3 bg-success border-0">
-    <form class="text-center p-3" action="" method="GET">
+    <form class="text-center p-3" action="btnagregarItem" method="POST">
       <h1>Nuevo Producto</h1>
       <label class="col-form-label" for="marca">Marca:</label>
         <input class="form-control" type="text" name="marca" value="" placeholder="" id="marca" require="marca" /><br />
@@ -21,7 +21,7 @@
       <label class="col-form-label" for="indiceVelocidad">Indice Velocidad:</label>
         <input class="form-control" type="text" name="indiceVelocidad" value="" placeholder="" id="indiceVelocidad" /><br />
 
-      <button class="btn btn-secondary" value="btnagregarItem" type="submit" name="action">Agregar</button>
+      <button class="btn btn-secondary" type="submit" name="action">Agregar</button>
     </form>
     </div>
     </section>

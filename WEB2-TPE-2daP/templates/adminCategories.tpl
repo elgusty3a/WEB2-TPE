@@ -21,7 +21,7 @@
                 <td>{$cat->categoria}</td>
                 {if ($log)}
                   <td>
-                    <form action="" method="GET">
+                    <form action="" method="POST">
                       <input type="hidden" name="id" value="{$cat->id}">
                       <input type="hidden" name="categoria" value="{$cat->categoria}">
                       <button class="btn btn-secondary" type="submit" name="action" value="editCat">Edit</button>

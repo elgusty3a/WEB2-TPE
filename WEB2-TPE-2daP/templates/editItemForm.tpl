@@ -1,6 +1,6 @@
 <section class="container mt-3 mb-3 col-12 col-md-8 col-lg-6 col-xl-5">
     <div class="card p-3 bg-secondary border-0">
-    <form class="text-center p-3" action="" method="GET">
+    <form class="text-center p-3" action="btneditItem" method="POST">
     <h1>Editar Producto</h1>
         <input class="form-control" type="hidden" name="idProduct" value="{$idProduct}" placeholder="" id="idProduct" require="idProduct" /><br />
       <label class="col-form-label" for="marca">Marca:</label>
@@ -22,7 +22,7 @@
       <label class="col-form-label" for="indiceVelocidad">Indice Velocidad:</label>
         <input class="form-control" type="text" name="indiceVelocidad" value="{$indiceVelocidad}" placeholder="" id="indiceVelocidad" /><br />
 
-      <button class="btn btn-warning" value="btneditItem" type="submit" name="action">Edit</button>
+      <button class="btn btn-warning" type="submit" name="action">Edit</button>
 
     </form>
     </div>

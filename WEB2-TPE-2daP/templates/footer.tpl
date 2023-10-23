@@ -1,4 +1,4 @@
-  <div class="container-fluid g-0">
+  <div class="container-fluid footer g-0">
     <footer class="bg-dark text-center text-white">
       <!-- Grid container -->
       <div class="container p-4 pb-0">

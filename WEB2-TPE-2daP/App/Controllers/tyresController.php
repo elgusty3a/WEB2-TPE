@@ -11,10 +11,14 @@ class tyresController{
 
     $this->model = new tyresModel();
     $this->view = new tyresView();
+    session_start();
+        if (!isset($_SESSION['logged'])) {
+            $_SESSION['logged'] = false;
+        }
   }
 
   public function showHome(){
-    session_start();
+    // session_start();
     $this->view->showHead();
     $categorias = $this->model->queryCategories();
     if (!empty($_SESSION) && $_SESSION['logged']){
@@ -28,7 +32,7 @@ class tyresController{
   }
 
   public function showListProducts(){
-    session_start();
+    // session_start();
     $products = $this->model->getListProducts();
     $categories = $this->model->queryCategories();
     // $log=$_SESSION['logged'];
@@ -43,9 +47,10 @@ class tyresController{
     $this->view->showFooter();
   }
   
-  public function details($getDetails){
-    session_start();
+  public function details(){
+    // session_start();
     $categories = $this->model->queryCategories();
+    $getDetails=$_POST;
     if (!empty($_SESSION) && $_SESSION['logged']){
       $log = $_SESSION['userName'];
       $nav = "navUser.tpl";
@@ -55,11 +60,10 @@ class tyresController{
       $nav = "nav.tpl";
       $this->view->details($getDetails,$nav,$log,$categories);
     }
-    // $this->view->showFooter();
   }
 
   public function filterBy($filter){
-    session_start();
+    // session_start();
     $products = $this->model->filterBy($filter);
     $this->view->showHead();
     //$this->view->showHeader();
@@ -73,144 +77,183 @@ class tyresController{
     $this->view->showFooter();
   }
   public function addItem(){
-    session_start();
+    // session_start();
+  if (!empty($_SESSION) && $_SESSION['logged']){
     $this->view->showHead();
     $categorias = $this->model->queryCategories();
     $this->view->showCRUD($_SESSION['userName'],$categorias);
     $this->view->addItemForm($categorias);
+  }else{
+    header("location: login");
+  }
     $this->view->showFooter();
   }
   public function btnagregarItem(){ /*TODO hacer */
-    session_start();
-    $this->view->showHead();
-    $categories = $this->model->queryCategories();
-    $this->view->showCRUD($_SESSION['userName'],$categories);
-
-    if (!empty($_GET) && (isset($_GET['marca']) && isset($_GET['medida']) && isset($_GET['categorias']))) {
-      $marca = $_GET['marca'];
-      $medida = $_GET['medida'];
-      $categoria = $_GET['categorias'];
-      $indiceCarga = $_GET['indiceCarga'];
-      $indiceVelocidad = $_GET['indiceVelocidad'];
-      $precio = $_GET['precio'];
-      $this->model->btnagregarItem($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria);
+    // session_start();
+    if (!empty($_SESSION) && $_SESSION['logged']){
+      $this->view->showHead();
+      $categories = $this->model->queryCategories();
+      $this->view->showCRUD($_SESSION['userName'],$categories);
+      if (!empty($_POST) && (isset($_POST['marca']) && isset($_POST['medida']) && isset($_POST['categorias']))) {
+        $marca = $_POST['marca'];
+        $medida = $_POST['medida'];
+        $categoria = $_POST['categorias'];
+        $indiceCarga = $_POST['indiceCarga'];
+        $indiceVelocidad = $_POST['indiceVelocidad'];
+        $precio = $_POST['precio'];
+        $this->model->btnagregarItem($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria);
+      }else{
+        echo 'Complete los cuadros';
+      }
+      $log=$_SESSION['logged'];
+      $products = $this->model->getListProducts();
+      $this->view->renderListProduct($products,$log);
     }else{
-      echo 'Complete los cuadros';
+      header("location: login");
     }
-    $log=$_SESSION['logged'];
-    $products = $this->model->getListProducts();
-    $this->view->renderListProduct($products,$log);
     $this->view->showFooter();
   }
 
-  public function editItem($getEdit){
-    session_start();
+  public function editItem(){
+    // session_start();
     $this->view->showHead();
-    $categories = $this->model->queryCategories();
-    $this->view->showCRUD($_SESSION['userName'],$categories);
-    $idProduct = $getEdit['idProduct'];
-    $marca = $getEdit['marca'];
-    $medida = $getEdit['medida'];
-    $categoria = $getEdit['categorias'];
-    $indiceCarga = $getEdit['indiceCarga'];
-    $indiceVelocidad = $getEdit['indiceVelocidad'];
-    $precio = $getEdit['precio'];
-    $this->view->editItemForm($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria,$idProduct,$categories);
+    if (!empty($_SESSION) && $_SESSION['logged']){
+      $categories = $this->model->queryCategories();
+      $this->view->showCRUD($_SESSION['userName'],$categories);
+      $idProduct = $_POST['idProduct'];
+      $marca = $_POST['marca'];
+      $medida = $_POST['medida'];
+      $categoria = $_POST['categorias'];
+      $indiceCarga = $_POST['indiceCarga'];
+      $indiceVelocidad = $_POST['indiceVelocidad'];
+      $precio = $_POST['precio'];
+      $this->view->editItemForm($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria,$idProduct,$categories);
+    }else{
+      header("location: login");
+    }
     $this->view->showFooter();
   }
-  public function editCat($getCat){
-    session_start();
-    $this->view->showHead();
-    $categories = $this->model->queryCategories();
-    $this->view->showCRUD($_SESSION['userName'],$categories);
-    $idCat = $_GET['id'];
-    $categoria = $_GET['categoria'];
-    $this->view->editcatForm($categoria,$idCat);
-    $this->view->showFooter();
+  public function editCat(){
+    if (!empty($_SESSION) && $_SESSION['logged']){
+      // var_dump($_POST);
+      // die;
+      if (!empty($_POST) && !empty($_POST["id"]) && !empty($_POST["categoria"])) {
+        $categories=$this->model->queryCategories();
+        $this->view->showCRUD($_SESSION['userName'],$categories);
+        $idCat = $_POST['id'];
+        $categoria = $_POST['categoria'];
+        $this->view->editCatForm($categoria, $idCat);
+      } else{
+        echo "Todos los datos son requeridos.";
+      }
+    }else{
+      header("location: login");
+    }
   }
-  public function btneditItem($postEdit){
-    session_start();
-    $this->view->showHead();
-    $categories = $this->model->queryCategories();
-    $this->view->showCRUD($_SESSION['userName'],$categories);
-    $idProduct = $_GET['idProduct'];
-    $marca = $_GET['marca'];
-    $medida = $_GET['medida'];
-    $categoria = $_GET['categorias'];
-    $indiceCarga = $_GET['indiceCarga'];
-    $indiceVelocidad = $_GET['indiceVelocidad'];
-    $precio = $_GET['precio'];
-    $this->model->editItemForm($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria,$idProduct);
-    $this->view->showFooter();
+  public function btneditItem(){
+    if (!empty($_SESSION) && $_SESSION['logged']){
+      $idProduct = $_POST['idProduct'];
+      $marca = $_POST['marca'];
+      $medida = $_POST['medida'];
+      $categoria = $_POST['categorias'];
+      $indiceCarga = $_POST['indiceCarga'];
+      $indiceVelocidad = $_POST['indiceVelocidad'];
+      $precio = $_POST['precio'];
+      $this->model->editItemForm($marca,$medida,$indiceCarga,$indiceVelocidad,$precio,$categoria,$idProduct);
+      header("Location: list");
+    }else{
+      header("location: login");
+    }
   }
-  public function btneditCat($getCat){
-    session_start();
-    $this->view->showHead();
-    $categories = $this->model->queryCategories();
-    $this->view->showCRUD($_SESSION['userName'],$categories);
-    $idCat = $_GET['idCat'];
-    $categoria = $_GET['categoria'];
-    $this->model->editCatForm($categoria,$idCat);
-    $this->view->showFooter();
+  public function btneditCat(){
+    if (!empty($_SESSION) && $_SESSION['logged']){
+      $this->view->showHead();
+      $categories = $this->model->queryCategories();
+      $idCat = $_POST['idCat'];
+      $categoria = $_POST['categoria'];
+      $this->model->editCatForm($categoria,$idCat);
+      $categories = $this->model->queryCategories();
+      $this->view->showCRUD($_SESSION['userName'],$categories);
+      $this->view->adminCategories($categories,$_SESSION['logged']);
+      $this->view->showFooter();
+    }else{
+      header("location: login");
+    }
   }
 
-  public function eraseItem($getItem){
-    session_start();
-    $this->view->showHead();
-    $categories = $this->model->queryCategories();
-    $this->view->showCRUD($_SESSION['userName'],$categories);
-    $id=$getItem['idProduct'];
-    $this->model->eraseItem($id);
-    $log=$_SESSION['logged'];
-    $products = $this->model->getListProducts();
-    $this->view->renderListProduct($products,$log);
-    $this->view->showFooter();
+  public function eraseItem(){
+    if (!empty($_SESSION) && $_SESSION['logged']){
+      if (!empty($_POST) && !empty($_POST["idProduct"])) {
+        $id = $_POST['idProduct'];
+        $this->model->eraseItem($id);
+        header("Location: list");
+      }
+      else {
+      echo "Todos los datos son requeridos.";
+      }
+    }else{
+      header("location: login");
+    }
   }
 
   public function adminCategories(){
-    session_start();
-    $this->view->showHead();
-    $categories = $this->model->queryCategories();
-    $this->view->showCRUD($_SESSION['userName'],$categories);
-    $this->view->adminCategories($categories,$_SESSION['logged']);
-    $this->view->showFooter();
+    if (!empty($_SESSION) && $_SESSION['logged']){
+      $this->view->showHead();
+      $categories = $this->model->queryCategories();
+      $this->view->showCRUD($_SESSION['userName'],$categories);
+      $this->view->adminCategories($categories,$_SESSION['logged']);
+      $this->view->showFooter();
+    }else{
+      header("location: login");
+    }
   }
   public function addCat(){
-    session_start();
-    $this->view->showHead();
-    $categories = $this->model->queryCategories();
-    $this->view->showCRUD($_SESSION['userName'],$categories);
-    $this->view->addCateg();
-    $this->view->showFooter();
-  }
-  public function btnagregarCat($getCat){
-    session_start();
-    $this->view->showHead();
-    $this->model->btnagregarCat($getCat['categoria']);
-    $categories = $this->model->queryCategories();
-    $this->view->showCRUD($_SESSION['userName'],$categories);
-    $this->view->adminCategories($categories,$_SESSION['userName']);
-    $this->view->showFooter();
-  }
-  public function eraseCat($getCat){
-    session_start();
-    $this->view->showHead();
-    $id=$getCat['id'];
-    $cat=$getCat['categoria'];
-    $productByCat= $this->model->filterBy($cat);
-    $categories = $this->model->queryCategories();
-    $this->view->showCRUD($_SESSION['userName'],$categories);
-    if(!$productByCat){
-      $this->model->eraseCat($id);
+    if (!empty($_SESSION) && $_SESSION['logged']){
+      $this->view->showHead();
+      $categories = $this->model->queryCategories();
+      $this->view->showCRUD($_SESSION['userName'],$categories);
+      $this->view->addCateg();
+      $this->view->showFooter();
     }else{
-      $this->view->errorEraseCat();
+      header("location: login");
     }
-    $this->view->adminCategories($categories,$_SESSION['userName']);
-    $this->view->showFooter();
+  }
+  public function btnagregarCat(){
+    if (!empty($_SESSION) && $_SESSION['logged']){
+      $this->view->showHead();
+      $postCateg=$_POST['categoria'];
+      $this->model->btnagregarCat($postCateg);
+      $categories = $this->model->queryCategories();
+      $this->view->showCRUD($_SESSION['userName'],$categories);
+      $this->view->adminCategories($categories,$_SESSION['userName']);
+      $this->view->showFooter();
+    }else{
+      header("location: login");
+    }
+  }
+  public function eraseCat(){
+    if (!empty($_SESSION) && $_SESSION['logged']){
+      $this->view->showHead();
+      $id=$_POST['id'];
+      $cat=$_POST['categoria'];
+      $productByCat= $this->model->filterBy($cat);
+      $categories = $this->model->queryCategories();
+      if(!$productByCat){
+        $this->model->eraseCat($id);
+        $categories = $this->model->queryCategories();
+        $this->view->showCRUD($_SESSION['userName'],$categories);
+        $this->view->adminCategories($categories,$_SESSION['userName']);
+        $this->view->showFooter();
+      }else{
+        $this->view->errorEraseCat();
+      }
+    }else{
+      header("location: login");
+    }
   }
 
   public function about(){
-    session_start();
+    // session_start();
     $this->view->showHead();
     $categories = $this->model->queryCategories();
     if (!empty($_SESSION) && $_SESSION['logged']){

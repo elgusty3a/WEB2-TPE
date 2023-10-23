@@ -1,3 +1,13 @@
 body {
-  min-height: max-content;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 20vh;
+}
+
+footer{
+  min-width: 100%;
+  position:absolute;
+  bottom: 0;
 }
